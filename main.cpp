@@ -20,7 +20,7 @@ int main (){
         cout<<"Iveskite "<<i+1<<" studento duomenis "<<endl;
         valymas(temp);
         ivedimas(temp);
-    
+        cin.ignore();
         namu_darbai(temp);
         if (c==1) {
             vidurkis(temp);
