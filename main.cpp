@@ -5,38 +5,56 @@
 #include <vector>
 #include <string>
 #include <limits>
+#include <cstdlib> 
 
 int main (){
 
     vector<stud>vec1;
     stud temp;
-    int k,c;
+    int k,c,p,n;
+
     cout<<"Ka noresite skaiciuoti? (1 - vidurki, 2 - mediana):";
     cin>>c;
     cout<<"Keliu studentu duomenis ivesite? ";
     cin>>k;
+    cout<<"Ar norite kad pazymiai butu sugeneruoti automatiskai? (1 - taip, 2 - ne): ";
+    cin>>p;
+    bool generate=(p==1);
+    if (generate){
+        cout<<"kiek namu darbu norite, kad butu sugeneruota? ";
+        cin>>n;
+    }
     for(int i=0;i<k;i++)
     {
         cout<<"Iveskite "<<i+1<<" studento duomenis "<<endl;
         valymas(temp);
-        ivedimas(temp);
-        cin.ignore();
-        namu_darbai(temp);
-        if (c==1) {
+        ivedimas(temp,generate);
+
+        if (generate) {
+            for (int j=0; j<n; j++)
+                temp.ND.push_back(randomize(1,10));
+        } else{
+            namu_darbai(temp);
+         } 
+          if (c == 1) {
             vidurkis(temp);
-            cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Vid.)" << endl;
+        } else if (c == 2) {
+            mediana(temp);
+        }
+         vec1.push_back(temp);
+    }
+        if (c==1) {
+            cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Vid.)" ;
             cout<<"\n--------------------------------------------\n";
         } else if (c==2) {
-            mediana(temp);
-            cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Med.)" << endl;
+            cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Med.)";
             cout<<"\n--------------------------------------------\n";
         } else {
             cout<<"Klaidingas pasirinkimas";
             return 0;
         }
-        vec1.push_back(temp);
-    }
-    for(int i=0;i<k;i++)
+        
+    for(int i=0;i<vec1.size();i++)
         output(vec1.at(i));
     
     cout << "Press Enter to continue...";
