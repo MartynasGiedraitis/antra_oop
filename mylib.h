@@ -16,5 +16,6 @@ using std::left;
 using std::right;   
 using std::setprecision;
 using std::fixed;
+using std::getline;
 
 #endif // MYLIB_H_INCLUDED

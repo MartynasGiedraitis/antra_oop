@@ -38,3 +38,22 @@ void mediana(stud &lok)
         med=lok.ND[lok.ND.size()/2];
     lok.vid=0.4*med+0.6*lok.egz;
 }
+void namu_darbai(stud &lok)
+{   
+    int counter=1;
+    cout<<"Iveskite namu darbu pazymius"<<endl;
+    while(true){
+        cout<<"Iveskite "<<counter<<" pazymi arba spauskite Enter, jei daugiau pazymiu nera: ";
+        string input;
+        getline(cin,input);
+        if(input.empty())
+            break;
+        try{
+            int temp1=stoi(input);
+            lok.ND.push_back(temp1);
+            counter++;
+        } catch (...) {
+            cout<<"Ivestas ne skaicius"<<endl;
+        }
+    }
+}

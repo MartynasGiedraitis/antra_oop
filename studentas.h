@@ -15,4 +15,5 @@ void output(stud &lok);
 void valymas(stud &lok);
 void vidurkis(stud &lok);
 void mediana(stud &lok);
+void namu_darbai(stud &lok);
 #endif // STUD_H_INCLUDED
