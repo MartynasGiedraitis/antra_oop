@@ -3,11 +3,12 @@
 
 void ivedimas(stud &lok,bool generate)
 {
-  cout<<"Iveskite studento varda, pavarde, egzamino pazymi: "<<endl;
+  cout<<"Iveskite studento varda, pavarde: "<<endl;
   cin>>lok.vardas>>lok.pavarde;
   if(!generate){
     cout<<"Iveskite egzamino pazymi: ";
     cin>>lok.egz;
+    cin.ignore();
   }
   else{
     lok.egz=randomize(1,10);
@@ -66,4 +67,4 @@ void namu_darbai(stud &lok)
 }
 int randomize(int min, int max){
     return rand()%(max-min+1)+min;
-    }
+}
