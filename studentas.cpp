@@ -27,3 +27,14 @@ void vidurkis(stud &lok)
         ndAvg=0;
     lok.vid=0.4*ndAvg+0.6*lok.egz;
 }
+void mediana(stud &lok)
+{
+    double med;
+    if (lok.ND.size()==0)
+        med=0;
+    else if (lok.ND.size()%2==0)
+        med=(lok.ND[lok.ND.size()/2-1]+lok.ND[lok.ND.size()/2])/2.0;
+    else
+        med=lok.ND[lok.ND.size()/2];
+    lok.vid=0.4*med+0.6*lok.egz;
+}

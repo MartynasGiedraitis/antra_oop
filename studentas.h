@@ -14,4 +14,5 @@ void ivedimas(stud &lok);
 void output(stud &lok);
 void valymas(stud &lok);
 void vidurkis(stud &lok);
+void mediana(stud &lok);
 #endif // STUD_H_INCLUDED

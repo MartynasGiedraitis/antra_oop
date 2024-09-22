@@ -9,8 +9,10 @@ int main (){
 
     vector<stud>vec1;
     stud temp;
+    int n,k,c;
+    cout<<"Ka noresite skaiciuoti? (1 - vidurki, 2 - mediana):";
+    cin>>c;
     cout<<"Keliu studentu duomenis ivesite? ";
-    int n,k;
     cin>>k;
     cout<<"Kiek namu darbu pazymiu ivesite? ";
     cin>>n;
@@ -26,12 +28,21 @@ int main (){
             cin>>temp1;
             temp.ND.push_back(temp1);
         }
-        vidurkis(temp);
+        if (c==1) {
+            vidurkis(temp);
+            cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Vid.)" << endl;
+            cout<<"\n--------------------------------------------\n";
+        } else if (c==2) {
+            mediana(temp);
+            cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Med.)" << endl;
+            cout<<"\n--------------------------------------------\n";
+        } else {
+            cout<<"Klaidingas pasirinkimas";
+            return 0;
+        }
         vec1.push_back(temp);
     }
-    cout<<setw(15)<<left<<"Pavarde"<<setw(10)<<left<<"Vardas"<<setw(3)<<left<<"Galutinis (Vid.)"<<endl;
-    cout<<"\n--------------------------------------------\n";
-    for(int i=0;i<n;i++) {
+    for(int i=0;i<k;i++) {
         output(vec1.at(i));
     }
     cout << "Press Enter to continue...";
