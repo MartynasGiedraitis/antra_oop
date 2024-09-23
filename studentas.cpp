@@ -1,5 +1,8 @@
 #include "studentas.h"
 #include "mylib.h"
+#include <fstream>
+#include <sstream>
+#include <string>
 
 void ivedimas(stud &lok,bool generate)
 {
@@ -9,7 +12,7 @@ void ivedimas(stud &lok,bool generate)
     cout<<"Iveskite egzamino pazymi: ";
     cin>>lok.egz;
     cin.ignore();
-  }
+}
   else{
     lok.egz=randomize(1,10);
   }
@@ -67,4 +70,42 @@ void namu_darbai(stud &lok)
 }
 int randomize(int min, int max){
     return rand()%(max-min+1)+min;
+}
+void skaitymas(stud &lok, ifstream &inFile)
+{    
+    string line;
+    getline(inFile, line); // praleidziame pirmaja eilute
+
+    while (getline(inFile, line)) {
+        istringstream iss(line);
+        if (!(iss >> lok.pavarde >> lok.vardas)) {
+            cout << "Klaida nuskaitant varda, pavarde" << endl;
+            continue;
+        }
+        lok.ND.clear();
+        vector<int> pazymiai;
+        int temp2;
+        while (iss >> temp2) {
+            pazymiai.push_back(temp2);
+        }
+
+        if (pazymiai.size() > 0) {
+            lok.egz = pazymiai.back();
+            pazymiai.pop_back();
+        } else {
+            lok.egz = 0;
+        }
+        lok.ND = pazymiai;
+        // Debugging
+        cout << "Vardas: " << lok.vardas << ", Pavarde: " << lok.pavarde << endl;
+        cout << "Attempting to read: " << lok.vardas << " " << lok.pavarde << endl;
+        cout << "Namu darbu pazymiai: ";
+        for (int nd : lok.ND)
+            cout << nd << " ";
+        cout << endl;
+        vidurkis(lok);
+        mediana(lok); 
+        cout << "Egzamino pazymys: " << lok.egz << endl;
+        cout << "Galutinis (Vid.): " << lok.vid << endl;
+    }
 }

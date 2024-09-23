@@ -16,5 +16,6 @@ void valymas(stud &lok);
 void vidurkis(stud &lok);
 void mediana(stud &lok);
 void namu_darbai(stud &lok);
+void skaitymas(stud &lok, std:: ifstream &inFile);
 int randomize(int min, int max);
 #endif // STUD_H_INCLUDED

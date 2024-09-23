@@ -5,6 +5,14 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <vector>
+#include <string>
+#include <limits>
+#include <cstdlib> 
+#include <ctime>
+#include <fstream>
+#include <sstream>
+#include <string>
 
 using std::endl;
 using std::cout;
@@ -17,5 +25,7 @@ using std::right;
 using std::setprecision;
 using std::fixed;
 using std::getline;
-
+using std::ifstream;
+using std::string;
+using std::istringstream;
 #endif // MYLIB_H_INCLUDED
