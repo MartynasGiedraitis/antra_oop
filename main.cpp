@@ -6,19 +6,24 @@
 #include <string>
 #include <limits>
 #include <cstdlib> 
+#include <ctime>
 
 int main (){
-
+    srand(time(0));
     vector<stud>vec1;
     stud temp;
-    int k,c,p,n;
+    int k,c,p,n,r;
 
     cout<<"Ka noresite skaiciuoti? (1 - vidurki, 2 - mediana):";
     cin>>c;
+    cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";
+    cin>>r;
+    if (r==1){ 
     cout<<"Keliu studentu duomenis ivesite? ";
     cin>>k;
     cout<<"Ar norite kad pazymiai butu sugeneruoti automatiskai? (1 - taip, 2 - ne): ";
     cin>>p;
+    }
     bool generate=(p==1);
     if (generate){
         cout<<"kiek namu darbu norite, kad butu sugeneruota? ";
