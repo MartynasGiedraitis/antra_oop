@@ -39,7 +39,8 @@ void vidurkis(stud &lok)
     lok.vid=0.4*ndAvg+0.6*lok.egz;
 }
 void mediana(stud &lok)
-{
+{   
+    sort(lok.ND.begin(),lok.ND.end());
     double med;
     if (lok.ND.size()==0)
         med=0;
@@ -78,10 +79,7 @@ void skaitymas(stud &lok, ifstream &inFile)
     if (line.empty())
         return;
     istringstream iss(line);
-    if (!(iss >> lok.vardas >> lok.pavarde)){
-        cout<<"Klaida nuskaitant varda ir pavarde"<<endl;
-        return;
-    }
+    iss>>lok.vardas>>lok.pavarde;
     lok.ND.clear();
     int temp2;
     while (iss >> temp2){

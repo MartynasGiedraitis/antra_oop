@@ -28,4 +28,5 @@ using std::getline;
 using std::ifstream;
 using std::string;
 using std::istringstream;
+using::std::sort;
 #endif // MYLIB_H_INCLUDED
