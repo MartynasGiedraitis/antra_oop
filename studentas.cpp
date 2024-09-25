@@ -92,15 +92,4 @@ void skaitymas(stud &lok, ifstream &inFile)
     else{
         lok.egz=0;
     }
-        
-    // Debugging
-    // cout << "Vardas: " << lok.vardas << ", Pavarde: " << lok.pavarde << endl;
-    // cout << "Attempting to read: " << lok.vardas << " " << lok.pavarde << endl;
-    // cout << "Namu darbu pazymiai: ";
-    // for (int nd : lok.ND)
-    //  cout << nd << " ";
-    //  cout << endl;
-    //  cout << "Egzamino pazymys: " << lok.egz << endl;
-    //  cout << "Galutinis (Vid.): " << lok.vid << endl;
-    // }
 }

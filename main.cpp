@@ -16,6 +16,7 @@ int main (){
     vector<stud>vec1;
     stud temp;
     int k,c,p,n,r;
+    string fileName;
 
     cout<<"Ka noresite skaiciuoti? (1 - vidurki, 2 - mediana):";
     cin>>c;
@@ -54,7 +55,9 @@ int main (){
         }
     }
     if (r==2){
-        ifstream inFile("kursiokai.txt");
+        cout<<"Iveskite failo lokacija(pvz. C:\\Users\\Vardas\\Desktop\\kursiokai.txt): ";
+        cin>>fileName;
+        ifstream inFile(fileName.c_str());
         if(!inFile){
             cout<<"Failas nerastas";
             return 0;
