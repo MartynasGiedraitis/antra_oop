@@ -11,7 +11,7 @@ struct stud
 };
 
 void ivedimas(stud &lok,bool generate);
-void output(stud &lok);
+void output(const stud &lok);
 void valymas(stud &lok);
 void vidurkis(stud &lok);
 void mediana(stud &lok);

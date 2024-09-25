@@ -17,7 +17,7 @@ void ivedimas(stud &lok,bool generate)
     lok.egz=randomize(1,10);
   }
 }
-void output(stud &lok)
+void output(const stud &lok)
 {
   cout<<setw(15)<<left<<lok.pavarde<<setw(10)<<left<<lok.vardas<<setw(3)<<left<<fixed<<setprecision(2)<<lok.vid<<endl;
 }
@@ -74,38 +74,35 @@ int randomize(int min, int max){
 void skaitymas(stud &lok, ifstream &inFile)
 {    
     string line;
-    getline(inFile, line); // praleidziame pirmaja eilute
-
-    while (getline(inFile, line)) {
-        istringstream iss(line);
-        if (!(iss >> lok.pavarde >> lok.vardas)) {
-            cout << "Klaida nuskaitant varda, pavarde" << endl;
-            continue;
-        }
-        lok.ND.clear();
-        vector<int> pazymiai;
-        int temp2;
-        while (iss >> temp2) {
-            pazymiai.push_back(temp2);
-        }
-
-        if (pazymiai.size() > 0) {
-            lok.egz = pazymiai.back();
-            pazymiai.pop_back();
-        } else {
-            lok.egz = 0;
-        }
-        lok.ND = pazymiai;
-        // Debugging
-        cout << "Vardas: " << lok.vardas << ", Pavarde: " << lok.pavarde << endl;
-        cout << "Attempting to read: " << lok.vardas << " " << lok.pavarde << endl;
-        cout << "Namu darbu pazymiai: ";
-        for (int nd : lok.ND)
-            cout << nd << " ";
-        cout << endl;
-        vidurkis(lok);
-        mediana(lok); 
-        cout << "Egzamino pazymys: " << lok.egz << endl;
-        cout << "Galutinis (Vid.): " << lok.vid << endl;
+    getline(inFile, line);
+    if (line.empty())
+        return;
+    istringstream iss(line);
+    if (!(iss >> lok.vardas >> lok.pavarde)){
+        cout<<"Klaida nuskaitant varda ir pavarde"<<endl;
+        return;
     }
+    lok.ND.clear();
+    int temp2;
+    while (iss >> temp2){
+        lok.ND.push_back(temp2);
+    }
+    if (lok.ND.size()>0){
+        lok.egz=lok.ND.back();
+        lok.ND.pop_back();
+    }
+    else{
+        lok.egz=0;
+    }
+        
+    // Debugging
+    // cout << "Vardas: " << lok.vardas << ", Pavarde: " << lok.pavarde << endl;
+    // cout << "Attempting to read: " << lok.vardas << " " << lok.pavarde << endl;
+    // cout << "Namu darbu pazymiai: ";
+    // for (int nd : lok.ND)
+    //  cout << nd << " ";
+    //  cout << endl;
+    //  cout << "Egzamino pazymys: " << lok.egz << endl;
+    //  cout << "Galutinis (Vid.): " << lok.vid << endl;
+    // }
 }

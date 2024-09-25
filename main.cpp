@@ -59,18 +59,22 @@ int main (){
             cout<<"Failas nerastas";
             return 0;
         }
-        while (true) {
-            skaitymas(temp,inFile);
-            if(inFile.eof())
-                break;
-            if (!temp.vardas.empty() && !temp.pavarde.empty()) {
-                vec1.push_back(temp);
-            } else {
-                cout << "Klaida nuskaitant varda, pavarde" << endl;
-            }
-        }
-        inFile.close();
-    }    
+       string pirma;
+       getline(inFile,pirma);
+       while(!inFile.eof()){
+          skaitymas(temp,inFile);
+          if (inFile.eof())
+              break;
+          if (c == 1) {
+            vidurkis(temp);
+          }
+          else if (c == 2) {
+            mediana(temp);
+          }
+          vec1.push_back(temp); 
+       }
+       inFile.close();
+    }  
     if (c==1) {
             cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Vid.)" ;
             cout<<"\n--------------------------------------------\n";
