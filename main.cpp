@@ -57,20 +57,27 @@ int main (){
      if (c==1) {
             cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Vid.)" ;
             cout<<"\n--------------------------------------------\n";
+            for(int i=0;i<vec1.size();i++)
+                outputVID(vec1.at(i));
     } else if (c==2) {
             cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Med.)";
             cout<<"\n--------------------------------------------\n";
+            for(int i=0;i<vec1.size();i++)
+                outputMED(vec1.at(i));
     } 
     else {
             cout<<"Klaidingas pasirinkimas";
             return 0;
     }
-       for(int i=0;i<vec1.size();i++)
-        output(vec1.at(i));
+     
     }
     if (r==2){
         cout<<"Iveskite failo lokacija(pvz. C:\\Users\\Vardas\\Desktop\\kursiokai.txt): ";
         cin>>fileName;
+        if(!tikrinam(fileName)){
+            cout<<"Failas nerastas";
+            return 0;
+        }
         ifstream inFile(fileName.c_str());
         if(!inFile){
             cout<<"Failas nerastas";

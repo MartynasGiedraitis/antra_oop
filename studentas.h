@@ -11,7 +11,7 @@ struct stud
 };
 
 void ivedimas(stud &lok,bool generate);
-void output(const stud &lok);
+void outputVID(const stud &lok);
 void valymas(stud &lok);
 void vidurkis(stud &lok);
 void mediana(stud &lok);
@@ -21,4 +21,6 @@ int randomize(int min, int max);
 void output2(const stud &lok);
 void rusiavimas(std::vector<stud> &vec1);
 bool compare(const stud &a, const stud &b);
+bool tikrinam(string & fileName);
+void outputMED(const stud &lok);
 #endif // STUD_H_INCLUDED

@@ -17,9 +17,13 @@ void ivedimas(stud &lok,bool generate)
     lok.egz=randomize(1,10);
   }
 }
-void output(const stud &lok)
+void outputVID(const stud &lok)
 {
   cout<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(3)<<left<<fixed<<setprecision(2)<<lok.vid<<endl;
+}
+void outputMED(const stud &lok)
+{
+  cout<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(3)<<left<<fixed<<setprecision(2)<<lok.med<<endl;
 }
 void output2(const stud &lok)
 {
@@ -104,4 +108,12 @@ bool compareByName(const stud &a, const stud &b) {
 }
 void rusiavimas(vector<stud> &vec1){
     sort(vec1.begin(),vec1.end(),compareByName);
+}
+bool tikrinam(string & fileName){
+    ifstream inFile(fileName.c_str());
+    if(!inFile){
+        cout<<"Failas nerastas";
+        return false;
+    }
+    return true;
 }
