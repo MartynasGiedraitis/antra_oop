@@ -7,7 +7,7 @@ struct stud
     std::string vardas,pavarde;
     std::vector<int> ND;
     int egz;
-    double vid;
+    double med,vid;
 };
 
 void ivedimas(stud &lok,bool generate);
@@ -18,4 +18,7 @@ void mediana(stud &lok);
 void namu_darbai(stud &lok);
 void skaitymas(stud &lok, std:: ifstream &inFile);
 int randomize(int min, int max);
+void output2(const stud &lok);
+void rusiavimas(std::vector<stud> &vec1);
+bool compare(const stud &a, const stud &b);
 #endif // STUD_H_INCLUDED

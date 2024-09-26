@@ -19,7 +19,13 @@ void ivedimas(stud &lok,bool generate)
 }
 void output(const stud &lok)
 {
-  cout<<setw(15)<<left<<lok.pavarde<<setw(10)<<left<<lok.vardas<<setw(3)<<left<<fixed<<setprecision(2)<<lok.vid<<endl;
+  cout<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(3)<<left<<fixed<<setprecision(2)<<lok.vid<<endl;
+}
+void output2(const stud &lok)
+{
+  cout<<setw(14)<<left<<lok.vardas<<setw(14)<<left<<lok.pavarde<<setw(14)
+  <<right<<fixed<<setprecision(2)<<lok.vid
+  <<setw(14)<<right<<fixed<<setprecision(2)<<lok.med<<endl;
 }
 void valymas(stud &lok){
     lok.vardas.clear();
@@ -48,7 +54,7 @@ void mediana(stud &lok)
         med=(lok.ND[lok.ND.size()/2-1]+lok.ND[lok.ND.size()/2])/2.0;
     else
         med=lok.ND[lok.ND.size()/2];
-    lok.vid=0.4*med+0.6*lok.egz;
+    lok.med=0.4*med+0.6*lok.egz;
 }
 void namu_darbai(stud &lok)
 {   
@@ -92,4 +98,10 @@ void skaitymas(stud &lok, ifstream &inFile)
     else{
         lok.egz=0;
     }
+}
+bool compareByName(const stud &a, const stud &b) {
+    return a.vardas < b.vardas;
+}
+void rusiavimas(vector<stud> &vec1){
+    sort(vec1.begin(),vec1.end(),compareByName);
 }

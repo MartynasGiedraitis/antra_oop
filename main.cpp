@@ -18,11 +18,11 @@ int main (){
     int k,c,p,n,r;
     string fileName;
 
-    cout<<"Ka noresite skaiciuoti? (1 - vidurki, 2 - mediana):";
-    cin>>c;
     cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";
     cin>>r;
     if (r==1){ 
+        cout<<"Ka noresite skaiciuoti? (1 - vidurki, 2 - mediana):";
+        cin>>c;
         cout<<"Keliu studentu duomenis ivesite? ";
         cin>>k;
         cout<<"Ar norite kad pazymiai butu sugeneruoti automatiskai? (1 - taip, 2 - ne): ";
@@ -53,6 +53,20 @@ int main (){
             }
             vec1.push_back(temp);
         }
+    rusiavimas(vec1);
+     if (c==1) {
+            cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Vid.)" ;
+            cout<<"\n--------------------------------------------\n";
+    } else if (c==2) {
+            cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Med.)";
+            cout<<"\n--------------------------------------------\n";
+    } 
+    else {
+            cout<<"Klaidingas pasirinkimas";
+            return 0;
+    }
+       for(int i=0;i<vec1.size();i++)
+        output(vec1.at(i));
     }
     if (r==2){
         cout<<"Iveskite failo lokacija(pvz. C:\\Users\\Vardas\\Desktop\\kursiokai.txt): ";
@@ -68,30 +82,20 @@ int main (){
           skaitymas(temp,inFile);
           if (inFile.eof())
               break;
-          if (c == 1) {
-            vidurkis(temp);
-          }
-          else if (c == 2) {
-            mediana(temp);
-          }
+          vidurkis(temp);
+          mediana(temp);
           vec1.push_back(temp); 
        }
        inFile.close();
-    }  
-    if (c==1) {
-            cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Vid.)" ;
-            cout<<"\n--------------------------------------------\n";
-    } else if (c==2) {
-            cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Med.)";
-            cout<<"\n--------------------------------------------\n";
-    } else {
-            cout<<"Klaidingas pasirinkimas";
-            return 0;
-    }
-        
-    for(int i=0;i<vec1.size();i++)
-        output(vec1.at(i));
+       rusiavimas(vec1);
+        cout << setw(14) << left << "Vardas" << setw(14) << left
+        << "Pavardė" << setw(14) << right << "Galutinis (Vid.)"<<" "<< setw(14)
+         << right << "Galutinis (Med.)";
+        cout<<"\n------------------------------------------------------------\n";
+        for(int i=0;i<vec1.size();i++)
+            output2(vec1.at(i));
     
+    }  
     cout << "Press Enter to continue...";
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     cin.get();
