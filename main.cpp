@@ -15,7 +15,7 @@ int main (){
     srand(time(0));
     vector<stud>vec1;
     stud temp;
-    int c,k,p,n,r;
+    int c,k,p,n,r,j;
     string fileName;
 
     cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";
@@ -31,6 +31,8 @@ int main (){
         if (generate){
         cout<<"kiek namu darbu norite, kad butu sugeneruota? ";
         cin>>n;
+        cout<<"Pagal ka norite rusiuoti? (1 - vardas, 2 - pavarde): ";
+        cin>>j;
         }
         for(int i=0;i<k;i++)
         {
@@ -53,7 +55,12 @@ int main (){
             }
             vec1.push_back(temp);
         }
-    rusiavimas(vec1);
+        if (j==1){
+            rusiavimaVardas(vec1);
+        }
+        else if (j==2){
+            rusiavimasPavarde(vec1);
+        }
      if (c==1) {
             cout << setw(15) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Vid.)" ;
             cout<<"\n--------------------------------------------\n";
@@ -75,14 +82,9 @@ int main (){
         cout<<"Iveskite failo lokacija(pvz. C:\\Users\\Vardas\\Desktop\\kursiokai.txt): ";
         cin>>fileName;
         if(!tikrinam(fileName)){
-            cout<<"Failas nerastas";
             return 0;
         }
-        ifstream inFile(fileName.c_str());
-        if(!inFile){
-            cout<<"Failas nerastas";
-            return 0;
-        }
+       ifstream inFile(fileName.c_str());
        string pirma;
        getline(inFile,pirma);
        while(!inFile.eof()){
@@ -94,7 +96,12 @@ int main (){
           vec1.push_back(temp); 
        }
        inFile.close();
-       rusiavimas(vec1);
+       if (j==1){
+            rusiavimaVardas(vec1);
+        }
+        else if (j==2){
+            rusiavimasPavarde(vec1);
+        }
         cout << setw(14) << left << "Vardas" << setw(14) << left
         << "Pavardė" << setw(14) << right << "Galutinis (Vid.)"<<" "<< setw(14)
          << right << "Galutinis (Med.)";

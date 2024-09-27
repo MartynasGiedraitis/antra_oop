@@ -120,8 +120,14 @@ void skaitymas(stud &lok, ifstream &inFile)
 bool compareByName(const stud &a, const stud &b) {
     return a.vardas < b.vardas;
 }
-void rusiavimas(vector<stud> &vec1){
+bool compareByLastName(const stud &a, const stud &b) {
+    return a.pavarde < b.pavarde;
+}
+void rusiavimaVardas(vector<stud> &vec1){
     sort(vec1.begin(),vec1.end(),compareByName);
+}
+void rusiavimasPavarde(vector<stud> &vec1){
+    sort(vec1.begin(),vec1.end(),compareByLastName);
 }
 bool tikrinam(string & fileName){
     ifstream inFile(fileName.c_str());

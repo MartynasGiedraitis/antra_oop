@@ -23,4 +23,6 @@ void rusiavimas(std::vector<stud> &vec1);
 bool compare(const stud &a, const stud &b);
 bool tikrinam(string & fileName);
 void outputMED(const stud &lok);
+void rusiavimasPavarde(std::vector<stud> &vec1);
+void rusiavimaVardas(std::vector<stud> &vec1);
 #endif // STUD_H_INCLUDED
