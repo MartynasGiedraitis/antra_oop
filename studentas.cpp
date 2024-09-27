@@ -12,7 +12,7 @@ void ivedimas(stud &lok,bool generate)
     cin>>egzam;
     try{
       lok.egz=stoi(egzam);
-      if (lok.egz>0 && lok.egz<10)
+      if (lok.egz>0 && lok.egz<=10)
         break;
       else{
         cout<<"Ivestas egzamino pazymys turi buti intervale nuo 1 iki 10"<<endl;
@@ -82,7 +82,7 @@ void namu_darbai(stud &lok)
             break;
         try{
             int temp1=stoi(input);
-            if (temp1>0 && temp1<10){
+            if (temp1>0 && temp1<=10){
                 lok.ND.push_back(temp1);
                 counter++;
             } else{
