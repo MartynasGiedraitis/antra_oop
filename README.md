@@ -1,5 +1,5 @@
 # **Studentų vidurkio skaičiavimo programa**
-## **Apie programą:
+## **Apie programą:**
 -Galima pasirinkti ar duomenis norima suvesti ranka ar nuskaityti iš failo.
 -Automatiškai generuojami namų darbų pažymiai bei egzamino rezultatas.
 -Apskaičiuojamas galutinis balas, pasirenkant ar naudojamas vidurkis ar mediana apskaičiuoti namų darbus. Galutinė formulė: 0.6*egz+0.4*nd(arba medianas arba vidurkis.
@@ -21,6 +21,7 @@ Reikės įvesti tekstinio failo, kuriame yra mokinio duomenys, vietą.
 – Tekstiniame faile turi būti duomenys tokiu formatu: „Vardas Pavardė ND1 ND2 ... Egzaminas“.
 
 ### **Funkcijos**
+Visos naudotos funkcijos:
 -ivedimas(stud &lok, bool generate): Tvarko studento duomenų įvedimą rankiniu būdu.
 -outputVID(const stud &lok): Išveda studento galutinį pažymį, apskaičiuotą pagal vidurkį.
 -outputMED(const stud &lok): Išveda studento galutinį pažymį, apskaičiuotą pagal medianą.
