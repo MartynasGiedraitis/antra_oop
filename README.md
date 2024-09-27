@@ -1,4 +1,7 @@
 # **Studentų vidurkio skaičiavimo programa**
+
+## **v.01**
+
 ## **Apie programą:**
 - Galima pasirinkti ar duomenis norima suvesti ranka ar nuskaityti iš failo.
 - Automatiškai generuojami namų darbų pažymiai bei egzamino rezultatas.
