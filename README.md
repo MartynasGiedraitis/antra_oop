@@ -22,14 +22,14 @@ Reikės įvesti tekstinio failo, kuriame yra mokinio duomenys, vietą.
 
 ### **Funkcijos**
 Visos naudotos funkcijos:
--ivedimas(stud &lok, bool generate): Tvarko studento duomenų įvedimą rankiniu būdu.
--outputVID(const stud &lok): Išveda studento galutinį pažymį, apskaičiuotą pagal vidurkį.
--outputMED(const stud &lok): Išveda studento galutinį pažymį, apskaičiuotą pagal medianą.
--valymas(stud &lok): Išvalo studento struktūrą, kad būtų galima įvesti naujus duomenis.
--vidurkis(stud &lok): Apskaičiuoja galutinį pažymį, naudojant namų darbų pažymių vidurkį.
--mediana(stud &lok): Apskaičiuoja galutinį pažymį, naudojant namų darbų pažymių medianą.
--namu_darbai(stud &lok): Tvarko namų darbų pažymių įvedimą rankiniu būdu.
--randomize(int min, int max): Sugeneruoja atsitiktinį skaičių nurodytame intervale.
--skaitymas(stud &lok, ifstream &inFile): Nuskaito studentų duomenis iš failo.
--rusiavimas(vector<stud> &vec1): Surūšiuoja studentų sąrašą pagal vardus.
--tikrinam(string &fileName): Patikrina, ar nurodytas failas egzistuoja.
+- ivedimas(stud &lok, bool generate): Tvarko studento duomenų įvedimą rankiniu būdu.
+- outputVID(const stud &lok): Išveda studento galutinį pažymį, apskaičiuotą pagal vidurkį.
+- outputMED(const stud &lok): Išveda studento galutinį pažymį, apskaičiuotą pagal medianą.
+- valymas(stud &lok): Išvalo studento struktūrą, kad būtų galima įvesti naujus duomenis.
+- vidurkis(stud &lok): Apskaičiuoja galutinį pažymį, naudojant namų darbų pažymių vidurkį.
+- mediana(stud &lok): Apskaičiuoja galutinį pažymį, naudojant namų darbų pažymių medianą.
+- namu_darbai(stud &lok): Tvarko namų darbų pažymių įvedimą rankiniu būdu.
+- randomize(int min, int max): Sugeneruoja atsitiktinį skaičių nurodytame intervale.
+- skaitymas(stud &lok, ifstream &inFile): Nuskaito studentų duomenis iš failo.
+- rusiavimas(vector<stud> &vec1): Surūšiuoja studentų sąrašą pagal vardus.
+- tikrinam(string &fileName): Patikrina, ar nurodytas failas egzistuoja.
