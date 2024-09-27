@@ -2,7 +2,7 @@
 ## **Apie programą:**
 - Galima pasirinkti ar duomenis norima suvesti ranka ar nuskaityti iš failo.
 - Automatiškai generuojami namų darbų pažymiai bei egzamino rezultatas.
-- Apskaičiuojamas galutinis balas, pasirenkant ar naudojamas vidurkis ar mediana apskaičiuoti namų darbus. Galutinė formulė: 0.6*egz+0.4*nd(arba medianas arba vidurkis.
+- Apskaičiuojamas galutinis balas, pasirenkant ar naudojamas vidurkis ar mediana apskaičiuoti namų darbus. Galutinė formulė: 0.6*egz+0.4*nd(arba mediana arba vidurkis).
 - Surūšiuojamas išvedimas pagal studento vardą.
 
 ## **Kaip veikia programa**
