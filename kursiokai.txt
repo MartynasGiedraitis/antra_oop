@@ -1,0 +1,12 @@
+Pavardė     Vardas     ND1   ND2   ND3   ND4   ND5   EGZAMINAS
+Jonaitis    Jonas      8     7     9     10    6     9
+Petrauskas  Petras     6     8     5     7     10    8
+Kazlauskas  Kazys      9     10    10    8     9     10
+Butkevičius Butas      7     7     6     8     7     7
+Jankauskaitė Janina    8     9     9     10    10    9
+Stankūnas   Stasys     6     5     7     6     8     7
+Valaitis    Valdas     9     8     10    9     8     9
+Gavėnas     Giedrius   7     6     8     9     7     8
+Mikalauskas Mykolas    8     9     8     7     9     9
+Šimkūnas    Šarūnas    10    10    10    10    9     10
+

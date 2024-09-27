@@ -15,7 +15,7 @@ int main (){
     srand(time(0));
     vector<stud>vec1;
     stud temp;
-    int k,c,p,n,r;
+    int c,k,p,n,r;
     string fileName;
 
     cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";
@@ -55,12 +55,12 @@ int main (){
         }
     rusiavimas(vec1);
      if (c==1) {
-            cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Vid.)" ;
+            cout << setw(15) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Vid.)" ;
             cout<<"\n--------------------------------------------\n";
             for(int i=0;i<vec1.size();i++)
                 outputVID(vec1.at(i));
     } else if (c==2) {
-            cout << setw(15) << left << "Pavarde" << setw(10) << left << "Vardas" << setw(20) << left << "Galutinis (Med.)";
+            cout << setw(15) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Med.)";
             cout<<"\n--------------------------------------------\n";
             for(int i=0;i<vec1.size();i++)
                 outputMED(vec1.at(i));

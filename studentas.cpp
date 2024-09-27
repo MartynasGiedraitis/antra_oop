@@ -1,19 +1,29 @@
 #include "studentas.h"
 #include "mylib.h"
-#include <fstream>
-#include <sstream>
-#include <string>
 
 void ivedimas(stud &lok,bool generate)
 {
   cout<<"Iveskite studento varda, pavarde: "<<endl;
   cin>>lok.vardas>>lok.pavarde;
   if(!generate){
+    string egzam;
+    while(true){
     cout<<"Iveskite egzamino pazymi: ";
-    cin>>lok.egz;
+    cin>>egzam;
+    try{
+      lok.egz=stoi(egzam);
+      if (lok.egz>0 && lok.egz<10)
+        break;
+      else{
+        cout<<"Ivestas egzamino pazymys turi buti intervale nuo 1 iki 10"<<endl;
+      }
+    } catch (const invalid_argument&) {
+      cout<<"Ivestas ne skaicius. Bandykite dar karta"<<endl;
+      lok.egz=0;
+        }
+    }
     cin.ignore();
-}
-  else{
+  } else{
     lok.egz=randomize(1,10);
   }
 }
@@ -72,10 +82,14 @@ void namu_darbai(stud &lok)
             break;
         try{
             int temp1=stoi(input);
-            lok.ND.push_back(temp1);
-            counter++;
+            if (temp1>0 && temp1<10){
+                lok.ND.push_back(temp1);
+                counter++;
+            } else{
+                cout<<"Ivestas pazymys turi buti intervale nuo 1 iki 10. Bandykite dar karta"<<endl;
+            }
         } catch (...) {
-            cout<<"Ivestas ne skaicius"<<endl;
+            cout<<"Ivestas ne skaicius, pataisykite įvedimą"<<endl;
         }
     }
 }

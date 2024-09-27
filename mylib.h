@@ -29,4 +29,7 @@ using std::ifstream;
 using std::string;
 using std::istringstream;
 using::std::sort;
+using::std::invalid_argument;
+using::std::numeric_limits;
+using::std::streamsize;
 #endif // MYLIB_H_INCLUDED
