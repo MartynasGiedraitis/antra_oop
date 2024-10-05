@@ -20,6 +20,8 @@ int main (){
 
     cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";
     cin>>r;
+    cout<<"Pagal ka norite rusiuoti? (1 - vardas, 2 - pavarde): ";
+    cin>>j;
     if (r==1){ 
         cout<<"Ka noresite skaiciuoti? (1 - vidurki, 2 - mediana):";
         cin>>c;
@@ -31,8 +33,6 @@ int main (){
         if (generate){
         cout<<"kiek namu darbu norite, kad butu sugeneruota? ";
         cin>>n;
-        cout<<"Pagal ka norite rusiuoti? (1 - vardas, 2 - pavarde): ";
-        cin>>j;
         }
         for(int i=0;i<k;i++)
         {
