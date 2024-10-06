@@ -25,4 +25,6 @@ bool tikrinam(string & fileName);
 void outputMED(const stud &lok);
 void rusiavimasPavarde(std::vector<stud> &vec1);
 void rusiavimaVardas(std::vector<stud> &vec1);
+void failoGeneravimas();
+vector<int> generavimas(int pazymiuSk);
 #endif // STUD_H_INCLUDED

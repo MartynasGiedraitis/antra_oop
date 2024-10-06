@@ -15,14 +15,20 @@ int main (){
     srand(time(0));
     vector<stud>vec1;
     stud temp;
-    int c,k,p,n,r,j;
+    int c,k,p,n,r,j,g;
     string fileName;
-
+    cout<<"Ar norite sugeneruoti faila? (1 - taip, 2 - ne): ";
+    cin>>g;
+    if (g==1){
+        failoGeneravimas();
+    }
+    else if(g==2){
     cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";
     cin>>r;
     cout<<"Pagal ka norite rusiuoti? (1 - vardas, 2 - pavarde): ";
     cin>>j;
-    if (r==1){ 
+    }
+    if (r==1 && g==2){ 
         cout<<"Ka noresite skaiciuoti? (1 - vidurki, 2 - mediana):";
         cin>>c;
         cout<<"Keliu studentu duomenis ivesite? ";
@@ -78,7 +84,7 @@ int main (){
     }
      
     }
-    if (r==2){
+    if (r==2 && g==2){
         cout<<"Iveskite failo lokacija(pvz. C:\\Users\\Vardas\\Desktop\\kursiokai.txt): ";
         cin>>fileName;
         if(!tikrinam(fileName)){

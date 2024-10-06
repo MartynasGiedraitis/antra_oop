@@ -137,24 +137,37 @@ bool tikrinam(string & fileName){
     }
     return true;
 }
-void failoGeneravimas(const string &fileName, int studentCount){
-    ofstream outFile(fileName);
-    if (!outFile){
-        cout<<"Failas nerastas"<<fileName<<endl;
-        return;
+void failoGeneravimas(){
+    const int studentuSk[]={1000};
+    for (int studentuSkaicius:studentuSk){
+        string fileName=to_string(studentuSkaicius)+"studentu.txt";
+        auto start=std::chrono::high_resolution_clock::now();
+        ofstream outFile(fileName);
+        if (!outFile){
+            cout<<"Failas nerastas"<<fileName<<endl;
+            return;
     }
-    for (int i=1; i<=studentCount; i++){
+    outFile<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde";
+    for (int i=1; i<=5; i++){
+        outFile<<setw(5)<<left<<"ND"+to_string(i);
+    }
+    outFile<<setw(5)<<left<<"Egz."<<endl;
+    
+    for (int i=1; i<=studentuSkaicius; i++){
         string vardas="Vardas"+to_string(i);
         string pavarde="Pavarde"+to_string(i);
-        outFile<<vardas<<" "<<pavarde<<" ";
+        outFile<<setw(15)<<left<<vardas<<setw(15)<<left<<pavarde;
         vector<int> pazymiai=generavimas(6);
         for (int pazymys:pazymiai){
-            outFile<<pazymys<<" ";
+            outFile<<setw(5)<<left<<pazymys;
         }
         outFile<<"\n";
     }
     outFile.close();
-    cout<<"Sukurtas failas:"<<fileName<<"su "<<studentCount<<" studentu duomenimis"<<endl;
+    auto end=std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration = end - start;
+    cout<<"Sukurtas failas: "<<fileName<<", per: "<<duration.count()<<"s"<<endl;
+    }
 
 }
 vector<int> generavimas(int pazymiuSk){

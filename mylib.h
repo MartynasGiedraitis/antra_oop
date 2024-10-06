@@ -14,6 +14,7 @@
 #include <sstream>
 #include <string>
 #include <random>
+#include <chrono>
 
 using std::endl;
 using std::cout;
