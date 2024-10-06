@@ -157,3 +157,10 @@ void failoGeneravimas(const string &fileName, int studentCount){
     cout<<"Sukurtas failas:"<<fileName<<"su "<<studentCount<<" studentu duomenimis"<<endl;
 
 }
+vector<int> generavimas(int pazymiuSk){
+    vector<int> pazymiai;
+    for(int i=0; i<pazymiuSk; i++){
+        pazymiai.push_back(randomize(1,10));
+    }
+    return pazymiai;
+}
