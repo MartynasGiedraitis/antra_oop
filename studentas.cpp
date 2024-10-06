@@ -177,3 +177,12 @@ vector<int> generavimas(int pazymiuSk){
     }
     return pazymiai;
 }
+void skirstymas(const vector<stud> &vec1, vector<stud> &vargsiukai, vector<stud> &kietiakai){
+    for(const stud &lok:vec1){
+    if (lok.vid<5){
+        vargsiukai.push_back(lok);
+    } else{
+        kietiakai.push_back(lok);
+    }
+    } 
+}

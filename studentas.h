@@ -27,4 +27,5 @@ void rusiavimasPavarde(std::vector<stud> &vec1);
 void rusiavimaVardas(std::vector<stud> &vec1);
 void failoGeneravimas();
 vector<int> generavimas(int pazymiuSk);
+void skirstymas(const vector<stud> &vec1, vector<stud> &vargsiukai, vector<stud> &kietiakai);
 #endif // STUD_H_INCLUDED

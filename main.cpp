@@ -34,14 +34,19 @@ int main (){
           skaitymas(temp,inFile);
           if (inFile.eof())
               break;
-        //   vidurkis(temp);
-        //   mediana(temp);
+          vidurkis(temp);
           vec1.push_back(temp); 
        }
        inFile.close();
        auto end=std::chrono::high_resolution_clock::now();
        std::chrono::duration<double> diff=end-start;
        cout<<"Failo nuskaitymo laikas: "<<diff.count()<<"s"<<endl;
+       vector<stud> vargsiukai, kietiakai;
+       auto start1=std::chrono::high_resolution_clock::now();
+       skirstymas(vec1,vargsiukai,kietiakai);
+       cout<<"Vargsiukai: "<<vargsiukai.size()<<endl;
+       cout<<"Kietiakai: "<<kietiakai.size()<<endl;
+
     }
     else if(g==2){
     cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";
