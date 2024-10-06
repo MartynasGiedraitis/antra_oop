@@ -137,3 +137,23 @@ bool tikrinam(string & fileName){
     }
     return true;
 }
+void failoGeneravimas(const string &fileName, int studentCount){
+    ofstream outFile(fileName);
+    if (!outFile){
+        cout<<"Failas nerastas"<<fileName<<endl;
+        return;
+    }
+    for (int i=1; i<=studentCount; i++){
+        string vardas="Vardas"+to_string(i);
+        string pavarde="Pavarde"+to_string(i);
+        outFile<<vardas<<" "<<pavarde<<" ";
+        vector<int> pazymiai=generavimas(6);
+        for (int pazymys:pazymiai){
+            outFile<<pazymys<<" ";
+        }
+        outFile<<"\n";
+    }
+    outFile.close();
+    cout<<"Sukurtas failas:"<<fileName<<"su "<<studentCount<<" studentu duomenimis"<<endl;
+
+}

@@ -13,6 +13,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <random>
 
 using std::endl;
 using std::cout;
@@ -32,4 +33,7 @@ using::std::sort;
 using::std::invalid_argument;
 using::std::numeric_limits;
 using::std::streamsize;
+using::std::setprecision;
+using std::ofstream;
+using::std::to_string;
 #endif // MYLIB_H_INCLUDED
