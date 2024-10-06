@@ -138,7 +138,7 @@ bool tikrinam(string & fileName){
     return true;
 }
 void failoGeneravimas(){
-    const int studentuSk[]={1000};
+    const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
     for (int studentuSkaicius:studentuSk){
         string fileName=to_string(studentuSkaicius)+"studentu.txt";
         auto start=std::chrono::high_resolution_clock::now();

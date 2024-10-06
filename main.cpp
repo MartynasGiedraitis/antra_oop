@@ -21,6 +21,27 @@ int main (){
     cin>>g;
     if (g==1){
         failoGeneravimas();
+        cout<<"Iveskite failo lokacija(pvz. C:\\Users\\Vardas\\Desktop\\kursiokai.txt): ";
+        cin>>fileName;
+        if(!tikrinam(fileName)){
+            return 0;
+        }
+       ifstream inFile(fileName.c_str());
+       string pirma;
+       getline(inFile,pirma);
+       auto start=std::chrono::high_resolution_clock::now();
+       while(!inFile.eof()){
+          skaitymas(temp,inFile);
+          if (inFile.eof())
+              break;
+        //   vidurkis(temp);
+        //   mediana(temp);
+          vec1.push_back(temp); 
+       }
+       inFile.close();
+       auto end=std::chrono::high_resolution_clock::now();
+       std::chrono::duration<double> diff=end-start;
+       cout<<"Failo nuskaitymo laikas: "<<diff.count()<<"s"<<endl;
     }
     else if(g==2){
     cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";
