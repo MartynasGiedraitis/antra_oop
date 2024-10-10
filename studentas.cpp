@@ -137,6 +137,24 @@ bool tikrinam(string & fileName){
     }
     return true;
 }
+void IsvedimasV(const vector <stud>& vargsiukai){
+    ofstream Vargsiukai("vargsiukai.txt");
+    Vargsiukai<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde"<<setw(3)<<left<<"Galutinis (Vid.)"<<endl;
+    for (const stud &lok:vargsiukai){
+        Vargsiukai<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(3)<<left<<lok.vid<<endl;
+    }
+    Vargsiukai.close();
+
+}
+void IsvedimasK(const vector <stud>& kietiakai){
+    ofstream Kietiakai("Kietiakai.txt");
+    Kietiakai<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde"<<setw(3)<<left<<"Galutinis (Vid.)"<<endl;
+    for (const stud &lok:kietiakai){
+        Kietiakai<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(3)<<left<<lok.vid<<endl;
+    }
+    Kietiakai.close();
+
+}
 void failoGeneravimas(){
     const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
     for (int studentuSkaicius:studentuSk){

@@ -21,7 +21,7 @@ int main (){
     cin>>g;
     if (g==1){
         failoGeneravimas();
-        cout<<"Iveskite failo lokacija(pvz. C:\\Users\\Vardas\\Desktop\\kursiokai.txt): ";
+        cout<<"Iveskite pasirinkto failo lokacija, tolimesniems skaiciavimams(pvz. C:\\Users\\Vardas\\Desktop\\kursiokai.txt): ";
         cin>>fileName;
         if(!tikrinam(fileName)){
             return 0;
@@ -44,8 +44,21 @@ int main (){
        vector<stud> vargsiukai, kietiakai;
        auto start1=std::chrono::high_resolution_clock::now();
        skirstymas(vec1,vargsiukai,kietiakai);
+       auto end1=std::chrono::high_resolution_clock::now();
+       std::chrono::duration<double> diff1=end1-start1;
+       cout<<"Studentu skirstymo i dvi grupes laikas: "<<diff1.count()<<"s"<<endl;
        cout<<"Vargsiukai: "<<vargsiukai.size()<<endl;
        cout<<"Kietiakai: "<<kietiakai.size()<<endl;
+       auto start2=std::chrono::high_resolution_clock::now();
+       IsvedimasV(vargsiukai);
+       auto end2=std::chrono::high_resolution_clock::now();
+       auto start3=std::chrono::high_resolution_clock::now();
+       IsvedimasK(kietiakai);
+       auto end3=std::chrono::high_resolution_clock::now();
+       std::chrono::duration<double> diff2=end2-start2;
+       std::chrono::duration<double> diff3=end3-start3;
+       cout<<"Vargsiuku isvedimo laikas: "<<diff2.count()<<"s"<<endl;
+       cout<<"Kietiaku isvedimo laikas: "<<diff3.count()<<"s"<<endl;
 
     }
     else if(g==2){
