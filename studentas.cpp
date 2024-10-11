@@ -204,3 +204,55 @@ void skirstymas(const vector<stud> &vec1, vector<stud> &vargsiukai, vector<stud>
     }
     } 
 }
+void failai(stud &temp, vector<stud> &vec1){
+    const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
+    for (int studentuSkaicius:studentuSk){
+        string fileName=to_string(studentuSkaicius)+"studentu.txt";
+        cout<<"Failas: "<<fileName<<endl;
+        auto start=std::chrono::high_resolution_clock::now();
+       ifstream inFile(fileName);
+       if (!inFile){
+           cout<<"Failas nerastas"<<fileName<<endl;
+           return;
+       }
+       string pirma;
+       getline(inFile,pirma);
+       while(!inFile.eof()){
+          skaitymas(temp,inFile);
+          if (inFile.eof())
+              break;
+          vidurkis(temp);
+          vec1.push_back(temp); 
+       }
+       inFile.close();
+       auto end=std::chrono::high_resolution_clock::now();
+       std::chrono::duration<double> diff=end-start;
+       cout<<"Failo nuskaitymo ir vidurkio skaciavimo laikas: "<<diff.count()<<"s"<<endl;
+       vector<stud> vargsiukai, kietiakai;
+       auto start1=std::chrono::high_resolution_clock::now();
+       skirstymas(vec1,vargsiukai,kietiakai);
+       auto end1=std::chrono::high_resolution_clock::now();
+       std::chrono::duration<double> diff1=end1-start1;
+       cout<<"Studentu skirstymo i dvi grupes laikas: "<<diff1.count()<<"s"<<endl;
+       cout<<"Vargsiukai: "<<vargsiukai.size()<<endl;
+       cout<<"Kietiakai: "<<kietiakai.size()<<endl;
+
+       auto start2=std::chrono::high_resolution_clock::now();
+       IsvedimasV(vargsiukai);
+       auto end2=std::chrono::high_resolution_clock::now();
+
+       auto start3=std::chrono::high_resolution_clock::now();
+       IsvedimasK(kietiakai);
+       auto end3=std::chrono::high_resolution_clock::now();
+
+       std::chrono::duration<double> diff2=end2-start2;
+       cout<<"Vargsiuku isvedimo laikas: "<<diff2.count()<<"s"<<endl;
+       std::chrono::duration<double> diff3=end3-start3;
+       cout<<"Kietiaku isvedimo laikas: "<<diff3.count()<<"s"<<endl;
+       
+       double bendrasLaikas=diff.count()+diff1.count()+diff2.count()+diff3.count();
+       cout<<studentuSkaicius<<" studentu failo apdorojimo laikas: "<<bendrasLaikas<<"s"<<endl;
+       vec1.clear();
+       }
+
+}
