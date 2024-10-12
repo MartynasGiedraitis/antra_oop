@@ -93,8 +93,11 @@ void namu_darbai(stud &lok)
         }
     }
 }
+std::random_device rd;
+std::mt19937 gen(rd());
 int randomize(int min, int max){
-    return rand()%(max-min+1)+min;
+    std::uniform_int_distribution<> distrib (min,max);
+    return distrib(gen);
 }
 void skaitymas(stud &lok, ifstream &inFile)
 {    
@@ -159,7 +162,7 @@ void failoGeneravimas(){
     const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
     for (int studentuSkaicius:studentuSk){
         string fileName=to_string(studentuSkaicius)+"studentu.txt";
-        auto start=std::chrono::high_resolution_clock::now();
+        ChronoTimer timerGen;
         ofstream outFile(fileName);
         if (!outFile){
             cout<<"Failas nerastas"<<fileName<<endl;
@@ -182,10 +185,9 @@ void failoGeneravimas(){
         outFile<<"\n";
     }
     outFile.close();
-    auto end=std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> duration = end - start;
-    cout<<"Sukurtas failas: "<<fileName<<", per: "<<duration.count()<<"s"<<endl;
+    cout<<"Sukurtas failas: "<<fileName<<", per: "<<timerGen.getElapsedTime()<<"s"<<endl;
     }
+    cout<<"\n------------------------------------------------------------\n";
 
 }
 vector<int> generavimas(int pazymiuSk){
@@ -206,10 +208,11 @@ void skirstymas(const vector<stud> &vec1, vector<stud> &vargsiukai, vector<stud>
 }
 void failai(stud &temp, vector<stud> &vec1){
     const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
+    ChronoTimer bendrasTimer;
     for (int studentuSkaicius:studentuSk){
         string fileName=to_string(studentuSkaicius)+"studentu.txt";
         cout<<"Failas: "<<fileName<<endl;
-        auto start=std::chrono::high_resolution_clock::now();
+        ChronoTimer nuskaitymasTimer;
        ifstream inFile(fileName);
        if (!inFile){
            cout<<"Failas nerastas"<<fileName<<endl;
@@ -225,34 +228,24 @@ void failai(stud &temp, vector<stud> &vec1){
           vec1.push_back(temp); 
        }
        inFile.close();
-       auto end=std::chrono::high_resolution_clock::now();
-       std::chrono::duration<double> diff=end-start;
-       cout<<"Failo nuskaitymo ir vidurkio skaciavimo laikas: "<<diff.count()<<"s"<<endl;
+       cout<<"Failo nuskaitymo ir vidurkio skaciavimo laikas: "<<nuskaitymasTimer.getElapsedTime()<<"s"<<endl;
        vector<stud> vargsiukai, kietiakai;
-       auto start1=std::chrono::high_resolution_clock::now();
+       ChronoTimer skirstymasTimer;
        skirstymas(vec1,vargsiukai,kietiakai);
-       auto end1=std::chrono::high_resolution_clock::now();
-       std::chrono::duration<double> diff1=end1-start1;
-       cout<<"Studentu skirstymo i dvi grupes laikas: "<<diff1.count()<<"s"<<endl;
-       cout<<"Vargsiukai: "<<vargsiukai.size()<<endl;
-       cout<<"Kietiakai: "<<kietiakai.size()<<endl;
+       cout<<"Studentu skirstymo i dvi grupes laikas: "<<skirstymasTimer.getElapsedTime()<<"s"<<endl;
 
-       auto start2=std::chrono::high_resolution_clock::now();
+       ChronoTimer isvedimasVTimer;
        IsvedimasV(vargsiukai);
-       auto end2=std::chrono::high_resolution_clock::now();
+       cout<<"Vargsiuku isvedimo laikas: "<<isvedimasVTimer.getElapsedTime()<<"s"<<endl;
 
-       auto start3=std::chrono::high_resolution_clock::now();
+       ChronoTimer isvedimasKTimer;
        IsvedimasK(kietiakai);
-       auto end3=std::chrono::high_resolution_clock::now();
+       cout<<"Kietiaku isvedimo laikas: "<<isvedimasKTimer.getElapsedTime()<<"s"<<endl;
 
-       std::chrono::duration<double> diff2=end2-start2;
-       cout<<"Vargsiuku isvedimo laikas: "<<diff2.count()<<"s"<<endl;
-       std::chrono::duration<double> diff3=end3-start3;
-       cout<<"Kietiaku isvedimo laikas: "<<diff3.count()<<"s"<<endl;
-       
-       double bendrasLaikas=diff.count()+diff1.count()+diff2.count()+diff3.count();
-       cout<<studentuSkaicius<<" studentu failo apdorojimo laikas: "<<bendrasLaikas<<"s"<<endl;
+       cout<<studentuSkaicius<<" studentu failo apdorojimo laikas: "<<bendrasTimer.getElapsedTime()<<"s"<<endl;
        vec1.clear();
+       cout<<endl;
+       cout<<"\n------------------------------------------------------------\n";
        }
 
 }

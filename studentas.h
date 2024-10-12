@@ -9,7 +9,19 @@ struct stud
     int egz;
     double med,vid;
 };
+class ChronoTimer {
+public:
+    ChronoTimer() : start_time(std::chrono::high_resolution_clock::now()) {}
 
+    double getElapsedTime() const {
+        auto end_time = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> elapsed = end_time - start_time;
+        return elapsed.count();
+    }
+
+private:
+    std::chrono::high_resolution_clock::time_point start_time;
+};
 void ivedimas(stud &lok,bool generate);
 void outputVID(const stud &lok);
 void valymas(stud &lok);
