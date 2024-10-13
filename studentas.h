@@ -36,7 +36,7 @@ bool compare(const stud &a, const stud &b);
 bool tikrinam(string & fileName);
 void outputMED(const stud &lok);
 void rusiavimasPavarde(std::vector<stud> &vec1);
-void rusiavimaVardas(std::vector<stud> &vec1);
+void rusiavimasVardas(std::vector<stud> &vec1);
 void failoGeneravimas();
 vector<int> generavimas(int pazymiuSk);
 void skirstymas(const vector<stud> &vec1, vector<stud> &vargsiukai, vector<stud> &kietiakai);

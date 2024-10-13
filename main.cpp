@@ -18,7 +18,7 @@ int main (){
     int c,k,p,n,r,j,g;
     string fileName;
     cout<<"Ar norite sugeneruoti failus? (1 - taip, 2 - ne): ";
-    cin>>g;
+    cin>>g; 
     if (g==1){
         failoGeneravimas();
         failai(temp,vec1);
@@ -26,10 +26,10 @@ int main (){
     else if(g==2){
     cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";
     cin>>r;
-    cout<<"Pagal ka norite rusiuoti? (1 - vardas, 2 - pavarde): ";
-    cin>>j;
     }
     if (r==1 && g==2){ 
+        cout<<"Pagal ka norite rusiuoti? (1 - vardas, 2 - pavarde): ";
+        cin>>j;
         cout<<"Ka noresite skaiciuoti? (1 - vidurki, 2 - mediana):";
         cin>>c;
         cout<<"Keliu studentu duomenis ivesite? ";
@@ -63,7 +63,7 @@ int main (){
             vec1.push_back(temp);
         }
         if (j==1){
-            rusiavimaVardas(vec1);
+            rusiavimasVardas(vec1);
         }
         else if (j==2){
             rusiavimasPavarde(vec1);
@@ -83,40 +83,7 @@ int main (){
             cout<<"Klaidingas pasirinkimas";
             return 0;
     }
-     
-    }
-    if (r==2 && g==2){
-        cout<<"Iveskite failo lokacija(pvz. C:\\Users\\Vardas\\Desktop\\kursiokai.txt): ";
-        cin>>fileName;
-        if(!tikrinam(fileName)){
-            return 0;
-        }
-       ifstream inFile(fileName.c_str());
-       string pirma;
-       getline(inFile,pirma);
-       while(!inFile.eof()){
-          skaitymas(temp,inFile);
-          if (inFile.eof())
-              break;
-          vidurkis(temp);
-          mediana(temp);
-          vec1.push_back(temp); 
-       }
-       inFile.close();
-       if (j==1){
-            rusiavimaVardas(vec1);
-        }
-        else if (j==2){
-            rusiavimasPavarde(vec1);
-        }
-        cout << setw(14) << left << "Vardas" << setw(14) << left
-        << "Pavardė" << setw(14) << right << "Galutinis (Vid.)"<<" "<< setw(14)
-         << right << "Galutinis (Med.)";
-        cout<<"\n------------------------------------------------------------\n";
-        for(int i=0;i<vec1.size();i++)
-            output2(vec1.at(i));
-    
-    }  
+    } 
     cout << "Press Enter to continue...";
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     cin.get();
