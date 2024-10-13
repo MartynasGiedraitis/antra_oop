@@ -15,19 +15,26 @@ int main (){
     srand(time(0));
     vector<stud>vec1;
     stud temp;
-    int c,k,p,n,r,j,g;
+    int c,k,p,n,r,j,g,pasirinkimas;
     string fileName;
-    cout<<"Ar norite sugeneruoti failus? (1 - taip, 2 - ne): ";
+    cout<<"Ar norite sugeneruoti/naudotis jau sugeneruotais failais? (1 - sugeneruoti, 2 - naudotis jau sugeneruotais, 3 - kita): ";
     cin>>g; 
     if (g==1){
+        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde): ";
+        cin>>pasirinkimas;
         failoGeneravimas();
-        failai(temp,vec1);
+        failai(pasirinkimas,temp,vec1);
     }
-    else if(g==2){
+    else if (g==2){
+        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde): ";
+        cin>>pasirinkimas;
+        failai(pasirinkimas,temp,vec1);
+    }
+    else if(g==3){
     cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";
     cin>>r;
     }
-    if (r==1 && g==2){ 
+    if (r==1 && g==3){ 
         cout<<"Pagal ka norite rusiuoti? (1 - vardas, 2 - pavarde): ";
         cin>>j;
         cout<<"Ka noresite skaiciuoti? (1 - vidurki, 2 - mediana):";

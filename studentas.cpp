@@ -142,20 +142,20 @@ bool tikrinam(string & fileName){
 }
 void IsvedimasV(const vector <stud>& vargsiukai){
     ofstream Vargsiukai("vargsiukai.txt");
-    Vargsiukai<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde"<<setw(5)<<left<<"Galutinis (Vid.)"<<endl;
-    cout<<"\n------------------------------------------------------------\n";
+    Vargsiukai<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
+    Vargsiukai<<"\n------------------------------------------------------------\n";
     for (const stud &lok:vargsiukai){
-        Vargsiukai<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(5)<<left<<lok.vid<<endl;
+        Vargsiukai<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
     }
     Vargsiukai.close();
 
 }
 void IsvedimasK(const vector <stud>& kietiakai){
     ofstream Kietiakai("Kietiakai.txt");
-    Kietiakai<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde"<<setw(5)<<left<<"Galutinis (Vid.)"<<endl;
-    cout<<"\n------------------------------------------------------------\n";
+    Kietiakai<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
+    Kietiakai<<"\n------------------------------------------------------------\n";
     for (const stud &lok:kietiakai){
-        Kietiakai<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(5)<<left<<lok.vid<<endl;
+        Kietiakai<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
     }
     Kietiakai.close();
 
@@ -175,8 +175,7 @@ void failoGeneravimas(){
         outFile<<setw(5)<<left<<"ND"+to_string(i);
     }
     outFile<<setw(5)<<left<<"Egz."<<endl;
-    cout<<"\n------------------------------------------------------------\n";
-    
+    outFile<<"\n-----------------------------------------------------------\n";
     for (int i=1; i<=studentuSkaicius; i++){
         string vardas="Vardas"+to_string(i);
         string pavarde="Pavarde"+to_string(i);
@@ -208,7 +207,7 @@ void skirstymas(const vector<stud> &vec1, vector<stud> &vargsiukai, vector<stud>
     }
     } 
 }
-void failai(stud &temp, vector<stud> &vec1){
+void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
     const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
     ChronoTimer bendrasTimer;
     for (int studentuSkaicius:studentuSk){
@@ -236,9 +235,6 @@ void failai(stud &temp, vector<stud> &vec1){
        skirstymas(vec1,vargsiukai,kietiakai);
        cout<<"Studentu skirstymo i dvi grupes laikas: "<<skirstymasTimer.getElapsedTime()<<"s"<<endl;
 
-       int pasirinkimas;
-       cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde): ";
-       cin>>pasirinkimas;
        if (pasirinkimas ==1){
            rusiavimasVardas(vargsiukai);
            rusiavimasVardas(kietiakai);
@@ -256,7 +252,6 @@ void failai(stud &temp, vector<stud> &vec1){
        cout<<studentuSkaicius<<" studentu failo apdorojimo laikas: "<<bendrasTimer.getElapsedTime()<<"s"<<endl;
        vec1.clear();
        cout<<endl;
-       cout<<"\n------------------------------------------------------------\n";
        }
 
 }

@@ -42,5 +42,5 @@ vector<int> generavimas(int pazymiuSk);
 void skirstymas(const vector<stud> &vec1, vector<stud> &vargsiukai, vector<stud> &kietiakai);
 void IsvedimasV(const vector<stud>& vargsiukai);
 void IsvedimasK(const vector <stud>& kietiakai);
-void failai(stud &temp, vector<stud> &vec1);
+void failai(int pasirinkimas,stud &temp, vector<stud> &vec1);
 #endif // STUD_H_INCLUDED
