@@ -36,3 +36,24 @@ Visos naudotos funkcijos:
 - skaitymas(stud &lok, ifstream &inFile): Nuskaito studentų duomenis iš failo.
 - rusiavimas(vector<stud> &vec1): Surūšiuoja studentų sąrašą pagal vardus.
 - tikrinam(string &fileName): Patikrina, ar nurodytas failas egzistuoja.
+
+#  v0.2
+
+1. Pridėta failų generavimo funkcija - failoGeneravimas().
+2. Pridėta studentų skirstymo funkcija Skirstymas(), skirstanti pagal galutinį vidurkį:
+    - Studentai, kurių galutinis balas < 5.0 - slabakai
+    - Studentai, kurių galutinis balas >= 5 - kietiakai
+3. Pridėtas funkcijų atlikimo laiko matavimas naudojantis ChronoTimer
+4. Pridėtos išvedimo funkcijos į dvi anksčiau paminėtas kategorijas: IsvedimasK(), IvedimasV().
+#
+
+### Laikai
+Išmatuoti failų su {1000,10000,100000,1000000,10000000} studentų duomenimis sugeneravimo laikai:
+| Studentų sk.     | Generavimo laikas |
+|------------------|-------------------|
+| 1000             | 0.011873s         |
+| 10000            | 0.050563s         |
+| 100000           | 0.275608s         |
+| 1000000          | 2.73432s          |
+| 10000000         | 27.435s           |
+
