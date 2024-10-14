@@ -17,8 +17,23 @@ int main (){
     stud temp;
     int c,k,p,n,r,j,g,pasirinkimas;
     string fileName;
-    cout<<"Ar norite sugeneruoti/naudotis jau sugeneruotais failais? (1 - sugeneruoti, 2 - naudotis jau sugeneruotais, 3 - kita): ";
-    cin>>g; 
+    while (true) {
+    cout << "Ar norite sugeneruoti/naudotis jau sugeneruotais failais? (1 - sugeneruoti, 2 - naudotis jau sugeneruotais, 3 - kita): ";
+    string input;
+    cin >> input;
+    try {
+        g = stoi(input); 
+        if (g >= 1 && g <= 3) {
+            break;  
+        } else {
+            cout << "Netinkama ivestis. Pasirinkimas turi buti 1, 2 arba 3." << endl;
+        }
+    } catch (const invalid_argument&) {
+        cout << "Ivestas ne skaicius. Bandykite dar karta." << endl;
+    } catch (const out_of_range&) {
+        cout << "Ivestas skaicius yra per didelis. Bandykite dar karta." << endl;
+    }
+}
     if (g==1){
         cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde): ";
         cin>>pasirinkimas;

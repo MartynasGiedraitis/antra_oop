@@ -37,4 +37,5 @@ using::std::streamsize;
 using::std::setprecision;
 using std::ofstream;
 using::std::to_string;
+using::std::out_of_range;
 #endif // MYLIB_H_INCLUDED

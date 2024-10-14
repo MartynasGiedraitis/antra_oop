@@ -234,7 +234,7 @@ void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
        ChronoTimer skirstymasTimer;
        skirstymas(vec1,vargsiukai,kietiakai);
        cout<<"Studentu skirstymo i dvi grupes laikas: "<<skirstymasTimer.getElapsedTime()<<"s"<<endl;
-
+       ChronoTimer sortinimoTimer;
        if (pasirinkimas ==1){
            rusiavimasVardas(vargsiukai);
            rusiavimasVardas(kietiakai);
@@ -242,6 +242,7 @@ void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
            rusiavimasPavarde(vargsiukai);
            rusiavimasPavarde(kietiakai);
        }
+       cout<<"Studentu rusiavimo laikas: "<<sortinimoTimer.getElapsedTime()<<"s"<<endl;
        ChronoTimer isvedimasVTimer;
        IsvedimasV(vargsiukai);
        cout<<"Vargsiuku isvedimo laikas: "<<isvedimasVTimer.getElapsedTime()<<"s"<<endl;
