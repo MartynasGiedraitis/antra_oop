@@ -175,7 +175,6 @@ void failoGeneravimas(){
         outFile<<setw(5)<<left<<"ND"+to_string(i);
     }
     outFile<<setw(5)<<left<<"Egz."<<endl;
-    outFile<<"\n-----------------------------------------------------------\n";
     for (int i=1; i<=studentuSkaicius; i++){
         string vardas="Vardas"+to_string(i);
         string pavarde="Pavarde"+to_string(i);
