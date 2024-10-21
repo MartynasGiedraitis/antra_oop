@@ -123,6 +123,8 @@ Stud struktūros objektai saugomi List duomenų struktūroje.
 - CPU - Apple M2
 - RAM - 16GB
 - SSD - 256GB
+#
+
 ### Laikai
 Atlikus duomenų struktūros pakeitimus iš naujo buvo išmatuoti failų su {1000,10000,100000,1000000,10000000} studentų duomenimis sugeneravimo laikai:
 - ### 1000:
