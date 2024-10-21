@@ -83,6 +83,8 @@ int main (){
             mediana(temp);
             }
             lst1.push_back(temp);
+            cout << "Studento objektas saugomas atminties adrese: " << &temp << endl;
+
         }
         if (j==1){
             rusiavimasVardas(lst1);
@@ -93,11 +95,9 @@ int main (){
      if (c==1) {
             cout << setw(15) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Vid.)" ;
             cout<<"\n--------------------------------------------\n";
-            list<stud>::iterator it=lst1.begin();
-            for(int i=0;i<lst1.size();i++)
-                advance(it,i);
+
+            for(list<stud>::iterator it=lst1.begin();it!=lst1.end();it++)
                 outputVID(*it);
-                it=lst1.begin();
     } else if (c==2) {
             cout << setw(15) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Med.)";
             cout<<"\n--------------------------------------------\n";
