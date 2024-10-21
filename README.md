@@ -113,3 +113,65 @@ Tada buvo išmatuotas šių failų nuskaitymo ir galutinio balo skaičiavimo, r�
 | 10000000 vargšiukų išvedimo į failą laikas  | 7.79330s      |
 | Failo nuskaitymas, balo skaičiavimas        | 35.6853s      |
 #
+
+#  v0.3
+### Atnaujinta:
+Stud struktūros objektai saugomi List duomenų struktūroje.
+#
+
+### Laikai
+Atlikus duomenų struktūros pakeitimus iš naujo buvo išmatuoti failų su {1000,10000,100000,1000000,10000000} studentų duomenimis sugeneravimo laikai:
+- ### 1000:
+
+| Veiksmas                                | Vidurkis (s)  |
+|-----------------------------------------|---------------|
+| 1000 įrašų rūšiavimo laikas             | 0.000585s     |
+| 1000 kietiakų išvedimo į failą laikas   | 0.008670s      |
+| 1000 įrašų dalijimo į dvi grupes laikas | 0.000702s      |
+| 1000 vargšiukų išvedimo į failą laikas  | 0.004001s     |
+| Failo nuskaitymas, balo skaičiavimas    | 0.014379s      |
+#
+
+- ### 10000:
+
+| Veiksmas                                 | Vidurkis (s)  |
+|------------------------------------------|---------------|
+| 10000 įrašų rūšiavimo laikas             | 0.00319s      |
+| 10000 kietiakų išvedimo į failą laikas   | 0.01036s      |
+| 10000 įrašų dalijimo į dvi grupes laikas | 0.00268s      |
+| 10000 vargšiukų išvedimo į failą laikas  | 0.00805s      |
+| Failo nuskaitymas, balo skaičiavimas     | 0.04536s      |
+#
+
+- ### 100000:
+
+| Veiksmas                                  | Vidurkis (s)  |
+|-------------------------------------------|---------------|
+| 100000 įrašų rūšiavimo laikas             | 0.03788s      |
+| 100000 kietiakų išvedimo į failą laikas   | 0.09972s      |
+| 100000 įrašų dalijimo į dvi grupes laikas | 0.02336s      |
+| 100000 vargšiukų išvedimo į failą laikas  | 0.06766s      |
+| Failo nuskaitymas, balo skaičiavimas      | 0.30834s      |
+#
+
+- ### 1000000:
+
+| Veiksmas                                   | Vidurkis (s)  |
+|--------------------------------------------|---------------|
+| 1000000 įrašų rūšiavimo laikas             | 0.64697s      |
+| 1000000 kietiakų išvedimo į failą laikas   | 1.03213s      |
+| 1000000 įrašų dalijimo į dvi grupes laikas | 0.23060s      |
+| 1000000 vargšiukų išvedimo į failą laikas  | 0.67248s      |
+| Failo nuskaitymas, balo skaičiavimas       | 3.15694s      |
+#
+
+- ### 10000000:
+
+| Veiksmas                                    | Vidurkis (s)  |
+|---------------------------------------------|---------------|
+| 10000000 įrašų rūšiavimo laikas             | 10.9377s      |
+| 10000000 kietiakų išvedimo į failą laikas   | 12.0304s      |
+| 10000000 įrašų dalijimo į dvi grupes laikas | 2.58583s      |
+| 10000000 vargšiukų išvedimo į failą laikas  | 7.80567s      |
+| Failo nuskaitymas, balo skaičiavimas        | 32.4328s      |
+#
