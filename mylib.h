@@ -16,6 +16,7 @@
 #include <random>
 #include <chrono>
 #include <list>
+#include <cstdint>
 
 using std::endl;
 using std::cout;
@@ -42,4 +43,5 @@ using::std::out_of_range;
 using::std::list;
 using::std::advance;
 using::std::iterator;
+using::std::hex;
 #endif // MYLIB_H_INCLUDED

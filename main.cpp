@@ -15,7 +15,7 @@ int main (){
     srand(time(0));
     list<stud>lst1;
     stud temp;
-    int c,k,p,n,r,j,g,pasirinkimas,it;
+    int c,k,p,n,r,j,g,pasirinkimas;
     string fileName;
     while (true) {
     cout << "Ar norite sugeneruoti/naudotis jau sugeneruotais failais? (1 - sugeneruoti, 2 - naudotis jau sugeneruotais, 3 - kita): ";
@@ -83,7 +83,6 @@ int main (){
             mediana(temp);
             }
             lst1.push_back(temp);
-            cout << "Studento objektas saugomas atminties adrese: " << &temp << endl;
 
         }
         if (j==1){
@@ -93,13 +92,13 @@ int main (){
             rusiavimasPavarde(lst1);
         }
      if (c==1) {
-            cout << setw(15) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Vid.)" ;
-            cout<<"\n--------------------------------------------\n";
+            cout << setw(10) << left << "Vardas" << setw(12) << left << "Pavardė" << setw(20) << left << "Galutinis (Vid.)"<<setw(15)<<left<< "Saugojimo ad.";
+            cout<<"\n---------------------------------------------------------\n";
 
             for(list<stud>::iterator it=lst1.begin();it!=lst1.end();it++)
                 outputVID(*it);
     } else if (c==2) {
-            cout << setw(15) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Med.)";
+            cout << setw(10) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Med.)"<<setw(15)<<left<< "Saugojimo ad.";
             cout<<"\n--------------------------------------------\n";
             for(list<stud>::iterator it=lst1.begin();it!=lst1.end();it++)
                 outputMED(*it);
