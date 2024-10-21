@@ -126,13 +126,13 @@ bool compareByName(const stud &a, const stud &b) {
 bool compareByLastName(const stud &a, const stud &b) {
     return a.pavarde < b.pavarde;
 }
-void rusiavimasVardas(vector<stud> &lst1){
+void rusiavimasVardas(list<stud> &lst1){
     lst1.sort(compareByName);
 }
-void rusiavimasPavarde(vector<stud> &lst1){
+void rusiavimasPavarde(list<stud> &lst1){
     lst1.sort(compareByLastName);
 }
-void rusiavimasVidurkis(vector<stud> &lst1){
+void rusiavimasVidurkis(list<stud> &lst1){
     lst1.sort(compareByAverage);
 }
 bool compareByAverage(const stud &a, const stud &b) {
@@ -203,7 +203,7 @@ vector<int> generavimas(int pazymiuSk){
     }
     return pazymiai;
 }
-void skirstymas(const list<stud> &lst1, vector<stud> &vargsiukai, vector<stud> &kietiakai){
+void skirstymas(const list<stud> &lst1, list<stud> &vargsiukai, list<stud> &kietiakai){
     for(const stud &lok:lst1){
     if (lok.vid<5){
         vargsiukai.push_back(lok);
@@ -235,7 +235,7 @@ void failai(int pasirinkimas,stud &temp, list<stud> &lst1){
        }
        inFile.close();
        cout<<"Failo nuskaitymo ir vidurkio skaciavimo laikas: "<<nuskaitymasTimer.getElapsedTime()<<"s"<<endl;
-       vector<stud> vargsiukai, kietiakai;
+       list<stud> vargsiukai, kietiakai;
        ChronoTimer skirstymasTimer;
        skirstymas(lst1,vargsiukai,kietiakai);
        cout<<"Studentu skirstymo i dvi grupes laikas: "<<skirstymasTimer.getElapsedTime()<<"s"<<endl;
