@@ -15,7 +15,7 @@ int main (){
     srand(time(0));
     list<stud>lst1;
     stud temp;
-    int c,k,p,n,r,j,g,pasirinkimas;
+    int c,k,p,n,r,j,g,pasirinkimas,it;
     string fileName;
     while (true) {
     cout << "Ar norite sugeneruoti/naudotis jau sugeneruotais failais? (1 - sugeneruoti, 2 - naudotis jau sugeneruotais, 3 - kita): ";
@@ -82,24 +82,27 @@ int main (){
             else if (c == 2) {
             mediana(temp);
             }
-            vec1.push_back(temp);
+            lst1.push_back(temp);
         }
         if (j==1){
-            rusiavimasVardas(vec1);
+            rusiavimasVardas(lst1);
         }
         else if (j==2){
-            rusiavimasPavarde(vec1);
+            rusiavimasPavarde(lst1);
         }
      if (c==1) {
             cout << setw(15) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Vid.)" ;
             cout<<"\n--------------------------------------------\n";
-            for(int i=0;i<vec1.size();i++)
-                outputVID(vec1.at(i));
+            list<stud>::iterator it=lst1.begin();
+            for(int i=0;i<lst1.size();i++)
+                advance(it,i);
+                outputVID(*it);
+                it=lst1.begin();
     } else if (c==2) {
             cout << setw(15) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Med.)";
             cout<<"\n--------------------------------------------\n";
-            for(int i=0;i<vec1.size();i++)
-                outputMED(vec1.at(i));
+            for(list<stud>::iterator it=lst1.begin();it!=lst1.end();it++)
+                outputMED(*it);
     } 
     else {
             cout<<"Klaidingas pasirinkimas";

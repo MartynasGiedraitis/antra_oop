@@ -40,4 +40,6 @@ using std::ofstream;
 using::std::to_string;
 using::std::out_of_range;
 using::std::list;
+using::std::advance;
+using::std::iterator;
 #endif // MYLIB_H_INCLUDED
