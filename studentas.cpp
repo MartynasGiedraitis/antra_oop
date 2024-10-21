@@ -132,6 +132,12 @@ void rusiavimasVardas(vector<stud> &vec1){
 void rusiavimasPavarde(vector<stud> &vec1){
     sort(vec1.begin(),vec1.end(),compareByLastName);
 }
+void rusiavimasVidurkis(vector<stud> &vec1){
+    sort(vec1.begin(),vec1.end(),compareByAverage);
+}
+bool compareByAverage(const stud &a, const stud &b) {
+    return a.vid > b.vid;
+}
 bool tikrinam(string & fileName){
     ifstream inFile(fileName.c_str());
     if(!inFile){
@@ -142,20 +148,20 @@ bool tikrinam(string & fileName){
 }
 void IsvedimasV(const vector <stud>& vargsiukai){
     ofstream Vargsiukai("vargsiukai.txt");
-    Vargsiukai<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
+    Vargsiukai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Vargsiukai<<"\n------------------------------------------------------------\n";
     for (const stud &lok:vargsiukai){
-        Vargsiukai<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
+        Vargsiukai<<setw(16)<<left<<lok.vardas<<setw(16)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
     }
     Vargsiukai.close();
 
 }
 void IsvedimasK(const vector <stud>& kietiakai){
     ofstream Kietiakai("Kietiakai.txt");
-    Kietiakai<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
+    Kietiakai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Kietiakai<<"\n------------------------------------------------------------\n";
     for (const stud &lok:kietiakai){
-        Kietiakai<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
+        Kietiakai<<setw(16)<<left<<lok.vardas<<setw(16)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
     }
     Kietiakai.close();
 
@@ -170,7 +176,7 @@ void failoGeneravimas(){
             cout<<"Failas nerastas"<<fileName<<endl;
             return;
     }
-    outFile<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde";
+    outFile<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde";
     for (int i=1; i<=5; i++){
         outFile<<setw(5)<<left<<"ND"+to_string(i);
     }
@@ -178,7 +184,7 @@ void failoGeneravimas(){
     for (int i=1; i<=studentuSkaicius; i++){
         string vardas="Vardas"+to_string(i);
         string pavarde="Pavarde"+to_string(i);
-        outFile<<setw(15)<<left<<vardas<<setw(15)<<left<<pavarde;
+        outFile<<setw(16)<<left<<vardas<<setw(16)<<left<<pavarde;
         vector<int> pazymiai=generavimas(6);
         for (int pazymys:pazymiai){
             outFile<<setw(5)<<left<<pazymys;
@@ -240,6 +246,10 @@ void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
        } else if (pasirinkimas==2){
            rusiavimasPavarde(vargsiukai);
            rusiavimasPavarde(kietiakai);
+       }
+       else if (pasirinkimas==3){
+           rusiavimasVidurkis(vargsiukai);
+           rusiavimasVidurkis(kietiakai);
        }
        cout<<"Studentu rusiavimo laikas: "<<sortinimoTimer.getElapsedTime()<<"s"<<endl;
        ChronoTimer isvedimasVTimer;

@@ -13,7 +13,7 @@
 
 int main (){
     srand(time(0));
-    vector<stud>vec1;
+    list<stud>lst1;
     stud temp;
     int c,k,p,n,r,j,g,pasirinkimas;
     string fileName;
@@ -35,15 +35,15 @@ int main (){
     }
 }
     if (g==1){
-        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde): ";
+        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde, 3 - pagal galutini pazymi): "; //prideti kad ir pagal galutini
         cin>>pasirinkimas;
         failoGeneravimas();
-        failai(pasirinkimas,temp,vec1);
+        failai(pasirinkimas,temp,lst1);
     }
     else if (g==2){
-        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde): ";
+        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde, 3 - pagal galutini pazymi): ";
         cin>>pasirinkimas;
-        failai(pasirinkimas,temp,vec1);
+        failai(pasirinkimas,temp,lst1);
     }
     else if(g==3){
     cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";

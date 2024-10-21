@@ -15,6 +15,7 @@
 #include <string>
 #include <random>
 #include <chrono>
+#include <list>
 
 using std::endl;
 using std::cout;
@@ -38,4 +39,5 @@ using::std::setprecision;
 using std::ofstream;
 using::std::to_string;
 using::std::out_of_range;
+using::std::list;
 #endif // MYLIB_H_INCLUDED
