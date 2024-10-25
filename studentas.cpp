@@ -29,11 +29,13 @@ void ivedimas(stud &lok,bool generate)
 }
 void outputVID(const stud &lok)
 {
-  cout<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(3)<<left<<fixed<<setprecision(2)<<lok.vid<<endl;
+  cout<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(3)<<left<<fixed<<setprecision(2)<<lok.vid<<
+  setw(15)<<left<<(&lok)<<endl;
 }
 void outputMED(const stud &lok)
 {
-  cout<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(3)<<left<<fixed<<setprecision(2)<<lok.med<<endl;
+  cout<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(3)<<left<<fixed<<setprecision(2)<<lok.med
+  <<setw(15)<<left<<&lok<<endl;
 }
 void output2(const stud &lok)
 {

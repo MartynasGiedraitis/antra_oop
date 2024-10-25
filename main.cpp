@@ -91,12 +91,12 @@ int main (){
             rusiavimasPavarde(vec1);
         }
      if (c==1) {
-            cout << setw(15) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Vid.)" ;
+            cout << setw(10) << left << "Vardas" << setw(12) << left << "Pavardė" << setw(20) << left << "Galutinis (Vid.)"<<setw(15)<<left<<"Adresas"; ;
             cout<<"\n--------------------------------------------\n";
             for(int i=0;i<vec1.size();i++)
                 outputVID(vec1.at(i));
     } else if (c==2) {
-            cout << setw(15) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Med.)";
+            cout << setw(10) << left << "Vardas" << setw(12) << left << "Pavardė" << setw(20) << left << "Galutinis (Med.)"<<setw(15)<<left<<"Adresas"; ;
             cout<<"\n--------------------------------------------\n";
             for(int i=0;i<vec1.size();i++)
                 outputMED(vec1.at(i));
