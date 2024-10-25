@@ -35,7 +35,7 @@ int main (){
     }
 }
     if (g==1){
-        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde, 3 - pagal galutini pazymi): "; //prideti kad ir pagal galutini
+        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde, 3 - pagal galutini pazymi): "; 
         cin>>pasirinkimas;
         failoGeneravimas();
         failai(pasirinkimas,temp,lst1);
