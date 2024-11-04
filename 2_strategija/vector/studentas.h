@@ -39,8 +39,10 @@ void rusiavimasPavarde(std::vector<stud> &vec1);
 void rusiavimasVardas(std::vector<stud> &vec1);
 void failoGeneravimas();
 vector<int> generavimas(int pazymiuSk);
-void skirstymas(const vector<stud> &vec1, vector<stud> &vargsiukai, vector<stud> &kietiakai);
+void skirstymas(vector<stud> &vec1, vector<stud> &vargsiukai);
 void IsvedimasV(const vector<stud>& vargsiukai);
-void IsvedimasK(const vector <stud>& kietiakai);
+void IsvedimasK(const vector <stud>& vec1);
 void failai(int pasirinkimas,stud &temp, vector<stud> &vec1);
+void rusiavimasVidurkis(vector<stud> &vec1);
+bool compareByAverage(const stud &a, const stud &b);
 #endif // STUD_H_INCLUDED

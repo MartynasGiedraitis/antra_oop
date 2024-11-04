@@ -35,13 +35,13 @@ int main (){
     }
 }
     if (g==1){
-        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde): ";
+        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde, 3 - pagal galutini pazymi): ";
         cin>>pasirinkimas;
         failoGeneravimas();
         failai(pasirinkimas,temp,vec1);
     }
     else if (g==2){
-        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde): ";
+        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde, 3 - pagal galutini pazymi): ";
         cin>>pasirinkimas;
         failai(pasirinkimas,temp,vec1);
     }

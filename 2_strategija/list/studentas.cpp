@@ -29,13 +29,13 @@ void ivedimas(stud &lok,bool generate)
 }
 void outputVID(const stud &lok)
 {
-  cout<<setw(10)<<left<<lok.vardas<<setw(13)<<left<<lok.pavarde<<setw(20)<<left<<fixed<<setprecision(2)<<lok.vid<<
-  setw(15)<<left<<(&lok)<<endl;
+  cout<<setw(10)<<left<<lok.vardas<<setw(13)<<left<<lok.pavarde<<setw(20)<<left<<fixed<<setprecision(2)<<lok.vid
+    <<setw(15)<<left<<(&lok)<<endl;
 }
 void outputMED(const stud &lok)
 {
-  cout<<setw(10)<<left<<lok.vardas<<setw(13)<<left<<lok.pavarde<<setw(20)<<left<<fixed<<setprecision(2)<<lok.med
-  <<setw(15)<<left<<&lok<<endl;
+  cout<<setw(15)<<left<<lok.vardas<<setw(12)<<left<<lok.pavarde<<setw(10)<<left<<fixed<<setprecision(2)<<lok.med
+  <<setw(15)<<left<<(&lok)<<endl;
 }
 void output2(const stud &lok)
 {
@@ -128,11 +128,17 @@ bool compareByName(const stud &a, const stud &b) {
 bool compareByLastName(const stud &a, const stud &b) {
     return a.pavarde < b.pavarde;
 }
-void rusiavimasVardas(vector<stud> &vec1){
-    sort(vec1.begin(),vec1.end(),compareByName);
+void rusiavimasVardas(list<stud> &lst1){
+    lst1.sort(compareByName);
 }
-void rusiavimasPavarde(vector<stud> &vec1){
-    sort(vec1.begin(),vec1.end(),compareByLastName);
+void rusiavimasPavarde(list<stud> &lst1){
+    lst1.sort(compareByLastName);
+}
+void rusiavimasVidurkis(list<stud> &lst1){
+    lst1.sort(compareByAverage);
+}
+bool compareByAverage(const stud &a, const stud &b) {
+    return a.vid > b.vid;
 }
 bool tikrinam(string & fileName){
     ifstream inFile(fileName.c_str());
@@ -142,22 +148,22 @@ bool tikrinam(string & fileName){
     }
     return true;
 }
-void IsvedimasV(const vector <stud>& vargsiukai){
+void IsvedimasV(const list <stud>& vargsiukai){
     ofstream Vargsiukai("vargsiukai.txt");
-    Vargsiukai<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
+    Vargsiukai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Vargsiukai<<"\n------------------------------------------------------------\n";
     for (const stud &lok:vargsiukai){
-        Vargsiukai<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
+        Vargsiukai<<setw(16)<<left<<lok.vardas<<setw(16)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
     }
     Vargsiukai.close();
 
 }
-void IsvedimasK(const vector <stud>& kietiakai){
+void IsvedimasK(const list <stud>& lst1){
     ofstream Kietiakai("Kietiakai.txt");
-    Kietiakai<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
+    Kietiakai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Kietiakai<<"\n------------------------------------------------------------\n";
-    for (const stud &lok:kietiakai){
-        Kietiakai<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
+    for (const stud &lok:lst1){
+        Kietiakai<<setw(16)<<left<<lok.vardas<<setw(16)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
     }
     Kietiakai.close();
 
@@ -172,7 +178,7 @@ void failoGeneravimas(){
             cout<<"Failas nerastas"<<fileName<<endl;
             return;
     }
-    outFile<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde";
+    outFile<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde";
     for (int i=1; i<=5; i++){
         outFile<<setw(5)<<left<<"ND"+to_string(i);
     }
@@ -180,7 +186,7 @@ void failoGeneravimas(){
     for (int i=1; i<=studentuSkaicius; i++){
         string vardas="Vardas"+to_string(i);
         string pavarde="Pavarde"+to_string(i);
-        outFile<<setw(15)<<left<<vardas<<setw(15)<<left<<pavarde;
+        outFile<<setw(16)<<left<<vardas<<setw(16)<<left<<pavarde;
         vector<int> pazymiai=generavimas(6);
         for (int pazymys:pazymiai){
             outFile<<setw(5)<<left<<pazymys;
@@ -199,16 +205,17 @@ vector<int> generavimas(int pazymiuSk){
     }
     return pazymiai;
 }
-void skirstymas(const vector<stud> &vec1, vector<stud> &vargsiukai, vector<stud> &kietiakai){
-    for(const stud &lok:vec1){
-    if (lok.vid<5){
-        vargsiukai.push_back(lok);
-    } else{
-        kietiakai.push_back(lok);
+void skirstymas(list<stud> &lst1, list<stud> &vargsiukai){
+for (auto it = lst1.begin(); it != lst1.end(); ) {
+    if (it->vid < 5) {
+        vargsiukai.push_back(*it);
+        it = lst1.erase(it);  
+    } else {
+        ++it;
     }
-    } 
 }
-void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
+}
+void failai(int pasirinkimas,stud &temp, list<stud> &lst1){
     const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
     ChronoTimer bendrasTimer;
     for (int studentuSkaicius:studentuSk){
@@ -227,21 +234,25 @@ void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
           if (inFile.eof())
               break;
           vidurkis(temp);
-          vec1.push_back(temp); 
+          lst1.push_back(temp); 
        }
        inFile.close();
        cout<<"Failo nuskaitymo ir vidurkio skaciavimo laikas: "<<nuskaitymasTimer.getElapsedTime()<<"s"<<endl;
-       vector<stud> vargsiukai, kietiakai;
+       list<stud> vargsiukai;
        ChronoTimer skirstymasTimer;
-       skirstymas(vec1,vargsiukai,kietiakai);
+       skirstymas(lst1,vargsiukai);
        cout<<"Studentu skirstymo i dvi grupes laikas: "<<skirstymasTimer.getElapsedTime()<<"s"<<endl;
        ChronoTimer sortinimoTimer;
        if (pasirinkimas ==1){
            rusiavimasVardas(vargsiukai);
-           rusiavimasVardas(kietiakai);
+           rusiavimasVardas(lst1);
        } else if (pasirinkimas==2){
            rusiavimasPavarde(vargsiukai);
-           rusiavimasPavarde(kietiakai);
+           rusiavimasPavarde(lst1);
+       }
+       else if (pasirinkimas==3){
+           rusiavimasVidurkis(vargsiukai);
+           rusiavimasVidurkis(lst1);
        }
        cout<<"Studentu rusiavimo laikas: "<<sortinimoTimer.getElapsedTime()<<"s"<<endl;
        ChronoTimer isvedimasVTimer;
@@ -249,10 +260,10 @@ void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
        cout<<"Vargsiuku isvedimo laikas: "<<isvedimasVTimer.getElapsedTime()<<"s"<<endl;
 
        ChronoTimer isvedimasKTimer;
-       IsvedimasK(kietiakai);
+       IsvedimasK(lst1);
        cout<<"Kietiaku isvedimo laikas: "<<isvedimasKTimer.getElapsedTime()<<"s"<<endl;
        cout<<studentuSkaicius<<" studentu failo apdorojimo laikas: "<<bendrasTimer.getElapsedTime()<<"s"<<endl;
-       vec1.clear();
+       lst1.clear();
        cout<<endl;
        }
 

@@ -1,3 +1,4 @@
+
 #include "studentas.h"
 #include "mylib.h"
 
@@ -152,11 +153,11 @@ void IsvedimasV(const vector <stud>& vargsiukai){
     Vargsiukai.close();
 
 }
-void IsvedimasK(const vector <stud>& kietiakai){
+void IsvedimasK(const vector <stud>& vec1){
     ofstream Kietiakai("Kietiakai.txt");
     Kietiakai<<setw(15)<<left<<"Vardas"<<setw(15)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Kietiakai<<"\n------------------------------------------------------------\n";
-    for (const stud &lok:kietiakai){
+    for (const stud &lok:vec1){
         Kietiakai<<setw(15)<<left<<lok.vardas<<setw(15)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
     }
     Kietiakai.close();
@@ -199,14 +200,16 @@ vector<int> generavimas(int pazymiuSk){
     }
     return pazymiai;
 }
-void skirstymas(const vector<stud> &vec1, vector<stud> &vargsiukai, vector<stud> &kietiakai){
-    for(const stud &lok:vec1){
-    if (lok.vid<5){
-        vargsiukai.push_back(lok);
-    } else{
-        kietiakai.push_back(lok);
+void skirstymas(vector<stud> &vec1, vector<stud> &vargsiukai){
+    for(size_t i=0; i<vec1.size();){
+    if (vec1[i].vid<5){
+        vargsiukai.push_back(vec1[i]);
+        vec1.erase(vec1.begin()+i);
     }
-    } 
+    else{
+        ++i;
+     }
+ }
 }
 void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
     const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
@@ -231,17 +234,21 @@ void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
        }
        inFile.close();
        cout<<"Failo nuskaitymo ir vidurkio skaciavimo laikas: "<<nuskaitymasTimer.getElapsedTime()<<"s"<<endl;
-       vector<stud> vargsiukai, kietiakai;
+       vector<stud> vargsiukai;
        ChronoTimer skirstymasTimer;
-       skirstymas(vec1,vargsiukai,kietiakai);
+       skirstymas(vec1,vargsiukai);
        cout<<"Studentu skirstymo i dvi grupes laikas: "<<skirstymasTimer.getElapsedTime()<<"s"<<endl;
        ChronoTimer sortinimoTimer;
        if (pasirinkimas ==1){
            rusiavimasVardas(vargsiukai);
-           rusiavimasVardas(kietiakai);
+           rusiavimasVardas(vec1);
        } else if (pasirinkimas==2){
            rusiavimasPavarde(vargsiukai);
-           rusiavimasPavarde(kietiakai);
+           rusiavimasPavarde(vec1);
+       }
+       else if (pasirinkimas==3){
+        rusiavimasVidurkis(vargsiukai);
+        rusiavimasVidurkis(vec1);
        }
        cout<<"Studentu rusiavimo laikas: "<<sortinimoTimer.getElapsedTime()<<"s"<<endl;
        ChronoTimer isvedimasVTimer;
@@ -249,11 +256,18 @@ void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
        cout<<"Vargsiuku isvedimo laikas: "<<isvedimasVTimer.getElapsedTime()<<"s"<<endl;
 
        ChronoTimer isvedimasKTimer;
-       IsvedimasK(kietiakai);
+       IsvedimasK(vec1);
        cout<<"Kietiaku isvedimo laikas: "<<isvedimasKTimer.getElapsedTime()<<"s"<<endl;
        cout<<studentuSkaicius<<" studentu failo apdorojimo laikas: "<<bendrasTimer.getElapsedTime()<<"s"<<endl;
        vec1.clear();
        cout<<endl;
        }
 
+
+}
+void rusiavimasVidurkis(vector<stud> &vec1){
+        sort(vec1.begin(),vec1.end(),compareByAverage);
+}
+    bool compareByAverage(const stud &a, const stud &b){
+        return a.vid>b.vid;
 }

@@ -13,7 +13,7 @@
 
 int main (){
     srand(time(0));
-    vector<stud>vec1;
+    list<stud>lst1;
     stud temp;
     int c,k,p,n,r,j,g,pasirinkimas;
     string fileName;
@@ -35,15 +35,15 @@ int main (){
     }
 }
     if (g==1){
-        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde): ";
+        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde, 3 - pagal galutini pazymi): "; 
         cin>>pasirinkimas;
         failoGeneravimas();
-        failai(pasirinkimas,temp,vec1);
+        failai(pasirinkimas,temp,lst1);
     }
     else if (g==2){
-        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde): ";
+        cout<<"Pagal ka norite ruosiuoti (1 - pagal varda, 2 - pagal pavarde, 3 - pagal galutini pazymi): ";
         cin>>pasirinkimas;
-        failai(pasirinkimas,temp,vec1);
+        failai(pasirinkimas,temp,lst1);
     }
     else if(g==3){
     cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";
@@ -82,24 +82,26 @@ int main (){
             else if (c == 2) {
             mediana(temp);
             }
-            vec1.push_back(temp);
+            lst1.push_back(temp);
+
         }
         if (j==1){
-            rusiavimasVardas(vec1);
+            rusiavimasVardas(lst1);
         }
         else if (j==2){
-            rusiavimasPavarde(vec1);
+            rusiavimasPavarde(lst1);
         }
      if (c==1) {
-            cout << setw(10) << left << "Vardas" << setw(12) << left << "Pavardė" << setw(20) << left << "Galutinis (Vid.)"<<setw(15)<<left<<"Adresas"; ;
-            cout<<"\n---------------------------------------------------\n";
-            for(int i=0;i<vec1.size();i++)
-                outputVID(vec1.at(i));
+            cout << setw(10) << left << "Vardas" << setw(12) << left << "Pavardė" << setw(20) << left << "Galutinis (Vid.)"<<setw(15)<<left<< "Saugojimo ad.";
+            cout<<"\n---------------------------------------------------------\n";
+
+            for(list<stud>::iterator it=lst1.begin();it!=lst1.end();it++)
+                outputVID(*it);
     } else if (c==2) {
-            cout << setw(10) << left << "Vardas" << setw(12) << left << "Pavardė" << setw(20) << left << "Galutinis (Med.)"<<setw(15)<<left<<"Adresas"; ;
-            cout<<"\n---------------------------------------------------\n";
-            for(int i=0;i<vec1.size();i++)
-                outputMED(vec1.at(i));
+            cout << setw(10) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Med.)"<<setw(15)<<left<< "Saugojimo ad.";
+            cout<<"\n--------------------------------------------\n";
+            for(list<stud>::iterator it=lst1.begin();it!=lst1.end();it++)
+                outputMED(*it);
     } 
     else {
             cout<<"Klaidingas pasirinkimas";
