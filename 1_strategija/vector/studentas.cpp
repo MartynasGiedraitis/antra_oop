@@ -243,6 +243,10 @@ void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
            rusiavimasPavarde(vargsiukai);
            rusiavimasPavarde(kietiakai);
        }
+       else if (pasirinkimas==3){
+        rusiavimasVidurkis(vargsiukai);
+        rusiavimasVidurkis(kietiakai);
+       }
        cout<<"Studentu rusiavimo laikas: "<<sortinimoTimer.getElapsedTime()<<"s"<<endl;
        ChronoTimer isvedimasVTimer;
        IsvedimasV(vargsiukai);
@@ -256,4 +260,10 @@ void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
        cout<<endl;
        }
 
+}
+void rusiavimasVidurkis(vector<stud> &vec1){
+        sort(vec1.begin(),vec1.end(),compareByAverage);
+}
+    bool compareByAverage(const stud &a, const stud &b){
+        return a.vid>b.vid;
 }
