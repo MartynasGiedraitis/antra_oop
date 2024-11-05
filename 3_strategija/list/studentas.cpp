@@ -205,14 +205,15 @@ vector<int> generavimas(int pazymiuSk){
     }
     return pazymiai;
 }
-void skirstymas(const list<stud> &lst1, list<stud> &vargsiukai, list<stud> &kietiakai){
-    for(const stud &lok:lst1){
-    if (lok.vid<5){
+void skirstymas(list<stud> &lst1, list<stud> &vargsiukai){
+    auto it=remove_if(lst1.begin(),lst1.end(),[&](const stud &lok){
+      if (lok.vid<5){
         vargsiukai.push_back(lok);
-    } else{
-        kietiakai.push_back(lok);
-    }
-    } 
+        return true;
+      }
+        return false;
+    });
+    lst1.erase(it,lst1.end());
 }
 void failai(int pasirinkimas,stud &temp, list<stud> &lst1){
     const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
@@ -239,19 +240,19 @@ void failai(int pasirinkimas,stud &temp, list<stud> &lst1){
        cout<<"Failo nuskaitymo ir vidurkio skaciavimo laikas: "<<nuskaitymasTimer.getElapsedTime()<<"s"<<endl;
        list<stud> vargsiukai, kietiakai;
        ChronoTimer skirstymasTimer;
-       skirstymas(lst1,vargsiukai,kietiakai);
+       skirstymas(lst1,vargsiukai);
        cout<<"Studentu skirstymo i dvi grupes laikas: "<<skirstymasTimer.getElapsedTime()<<"s"<<endl;
        ChronoTimer sortinimoTimer;
        if (pasirinkimas ==1){
            rusiavimasVardas(vargsiukai);
-           rusiavimasVardas(kietiakai);
+           rusiavimasVardas(lst1);
        } else if (pasirinkimas==2){
            rusiavimasPavarde(vargsiukai);
-           rusiavimasPavarde(kietiakai);
+           rusiavimasPavarde(lst1);
        }
        else if (pasirinkimas==3){
            rusiavimasVidurkis(vargsiukai);
-           rusiavimasVidurkis(kietiakai);
+           rusiavimasVidurkis(lst1);
        }
        cout<<"Studentu rusiavimo laikas: "<<sortinimoTimer.getElapsedTime()<<"s"<<endl;
        ChronoTimer isvedimasVTimer;
@@ -259,7 +260,7 @@ void failai(int pasirinkimas,stud &temp, list<stud> &lst1){
        cout<<"Vargsiuku isvedimo laikas: "<<isvedimasVTimer.getElapsedTime()<<"s"<<endl;
 
        ChronoTimer isvedimasKTimer;
-       IsvedimasK(kietiakai);
+       IsvedimasK(lst1);
        cout<<"Kietiaku isvedimo laikas: "<<isvedimasKTimer.getElapsedTime()<<"s"<<endl;
        cout<<studentuSkaicius<<" studentu failo apdorojimo laikas: "<<bendrasTimer.getElapsedTime()<<"s"<<endl;
        lst1.clear();
