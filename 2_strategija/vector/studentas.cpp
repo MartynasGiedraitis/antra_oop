@@ -201,23 +201,15 @@ vector<int> generavimas(int pazymiuSk){
     return pazymiai;
 }
 void skirstymas(vector<stud> &vec1, vector<stud> &vargsiukai){
-    for(size_t i=0; i<vec1.size(); i++){
-        if (vec1[i].vid<5){
-            vargsiukai.push_back(vec1[i]);
-            vec1.erase(vec1.begin()+i);
-        }
-        else{
-            ++i;
-        }
-    }
+   auto it=remove_if(vec1.begin(),vec1.end(),[&](const stud &lok){
+       if (lok.vid<5){
+           vargsiukai.push_back(lok);
+           return true;
+       }    
+       return false;
+   });
+    vec1.erase(it,vec1.end());
 }
-//     for (int i=vec1.size()-1; i>=0; --i){
-//         if (vec1[i].vid<5){
-//             vargsiukai.push_back(vec1[i]);
-//             vec1.erase(vec1.begin()+i);
-//         }
-//     }
-// }
 
 void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
     const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
