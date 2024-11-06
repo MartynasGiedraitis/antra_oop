@@ -185,11 +185,12 @@ Atlikus duomenų struktūros pakeitimus iš naujo buvo išmatuoti failų su {100
 # v1.0
 
 ### Pasikeitimai:
+Pateikiamos trys skirtingos studentų skirstymo į dvi grupes strategijos (konteinerio skaidymas į du naujus, kotnteinerio skaidymas į vieną naują, efektyvesnės strategijos realizavimas pridedant naujus algoritmus).
 
 ### Strategijos:
-- 1 strategija:
-- 2 strategija:
-- 3 strategija:
+- 1 strategija: studentų konteinerio vector arba list skaidymas į du naujus to paties tipo kontenerius: vargšiukai ir kietiakai.
+- 2 strategija: studentų konteinerio vector arba list skaidymas naudojant tik vieną to paties tipo konteinerį - vargšiukai ir pašalinant tuos studentus iš bendro konteinerio.
+- 3 strategija: patobulinta 2 strategija, list atveju pridėtas metodas std::move listams, o vektoriams std::partition.
   
 ### Laikai
 Kiekvienai startegijai su visais studentų kiekiais 5 kartus buvo matuojamas funkcijų atlikimo laikas ir išvestas laikų vidurkis.
