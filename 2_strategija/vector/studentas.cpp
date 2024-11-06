@@ -201,16 +201,24 @@ vector<int> generavimas(int pazymiuSk){
     return pazymiai;
 }
 void skirstymas(vector<stud> &vec1, vector<stud> &vargsiukai){
-    for(size_t i=0; i<vec1.size();){
-    if (vec1[i].vid<5){
-        vargsiukai.push_back(vec1[i]);
-        vec1.erase(vec1.begin()+i);
+    for(size_t i=0; i<vec1.size(); i++){
+        if (vec1[i].vid<5){
+            vargsiukai.push_back(vec1[i]);
+            vec1.erase(vec1.begin()+i);
+        }
+        else{
+            ++i;
+        }
     }
-    else{
-        ++i;
-     }
- }
 }
+//     for (int i=vec1.size()-1; i>=0; --i){
+//         if (vec1[i].vid<5){
+//             vargsiukai.push_back(vec1[i]);
+//             vec1.erase(vec1.begin()+i);
+//         }
+//     }
+// }
+
 void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
     const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
     ChronoTimer bendrasTimer;

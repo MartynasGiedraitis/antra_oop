@@ -206,14 +206,14 @@ vector<int> generavimas(int pazymiuSk){
     return pazymiai;
 }
 void skirstymas(list<stud> &lst1, list<stud> &vargsiukai){
-    auto it=remove_if(lst1.begin(),lst1.end(),[&](const stud &lok){
-      if (lok.vid<5){
-        vargsiukai.push_back(lok);
-        return true;
-      }
-        return false;
-    });
-    lst1.erase(it,lst1.end());
+    for(auto it=lst1.begin(); it!=lst1.end();){
+        if (it->vid<5){
+            vargsiukai.push_back((std::move)(*it));
+            it=lst1.erase(it);
+        } else{
+            it++;
+        }
+    }
 }
 void failai(int pasirinkimas,stud &temp, list<stud> &lst1){
     const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
