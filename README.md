@@ -182,6 +182,20 @@ Atlikus duomenų struktūros pakeitimus iš naujo buvo išmatuoti failų su {100
 | Failo nuskaitymas, balo skaičiavimas        | 32.4328s      |
 #
 
+# v1.0
+
+### Pasikeitimai:
+
+### Strategijos:
+- 1 strategija:
+- 2 strategija:
+- 3 strategija:
+  
+### Laikai
+Kiekvienai startegijai su visais studentų kiekiais 5 kartus buvo matuojamas funkcijų atlikimo laikas ir išvestas laikų vidurkis.
+Skirstymo į dvi studentus grupes funkcija geriausiai veikia:
+
+
 - ### 1000:
 | Veiksmas                                |2_strategija vektoriai | 2_strategija listai | list su std::move | vektoriai su partition|
 |---------------------------------------- |-----------------------|---------------------|-------------------|---------------------|
@@ -226,3 +240,26 @@ Atlikus duomenų struktūros pakeitimus iš naujo buvo išmatuoti failų su {100
 | Įrašų rušiavimas                        |                         |9.87628              |9.86224            |4.09061              |
 | Vargšiukų išvedimo į failą laikas       |                         |7.89672              |7.87886            |7.74810              |
 | Kietiakų išvedimo į failą laikas        |                         |12.6734              |11.4018            |11.2993              |
+
+### Naudojimo instrukcija naudojant cmake, visus žingsnius atliekant terminale:
+1.Instaliuojamas CMake:
+   
+   macOS atveju: brew install cmake
+   
+2.Terminale nurododoma direktorija, kurioje egzistuoja CMakeLists.txt failas:
+   
+   cd "direktorija su CMakeLists.txt"
+   
+3.Sukuriama build failu direktorija:
+
+    mkdir build
+    cd build
+
+4.Paleidziam Build failu generavimas:
+
+    cmake ..
+
+5.Paleidžiam projekto kompiliavima:
+   
+     make
+   
