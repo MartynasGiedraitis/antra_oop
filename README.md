@@ -272,4 +272,5 @@ Skirstymo į dvi studentų grupes funkcija geriausiai veikia:
 6. Programos paleidimas:
 
    vector atveju: ./strategija_vector
+   
    list atveju: ./strategija_list
