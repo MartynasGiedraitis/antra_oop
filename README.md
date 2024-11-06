@@ -183,46 +183,46 @@ Atlikus duomenų struktūros pakeitimus iš naujo buvo išmatuoti failų su {100
 #
 
 - ### 1000:
-| Veiksmas                                | 2_strategija vektoriai | 2_strategija listai | list su std::move | vektoriai su partition|
-|---------------------------------------- |-------------------------|---------------------|-------------------|---------------------|
-| Failo nuskaitymas ir vid. skaičiavimas  |               |           |          |           |
-| Įrašų skirstymas į dvi grupes           |               |           |          |           |
-| Įrašų rušiavimas                        |               |           |          |           |
-| Vargšiukų išvedimo į failą laikas       |               |           |          |           |
-| Kietiakų išvedimo į failą laikas        |               |           |          |           |
+| Veiksmas                                |2_strategija vektoriai | 2_strategija listai | list su std::move | vektoriai su partition|
+|---------------------------------------- |-----------------------|---------------------|-------------------|---------------------|
+| Failo nuskaitymas ir vid. skaičiavimas  |                       |0.01495              |0.01424            |0.01424              |
+| Įrašų skirstymas į dvi grupes           |                       |0.00049              |0.00028            |0.00069              |
+| Įrašų rušiavimas                        |                       |0.00059              |0.00056            |0.00174              |
+| Vargšiukų išvedimo į failą laikas       |                       |0.00463              |0.00337            |0.00585              |
+| Kietiakų išvedimo į failą laikas        |                       |0.00385              |0.00530            |0.00555              |
 
 - ### 10000:
 | Veiksmas                                | 2_strategija vektoriai | 2_strategija listai | list su std::move | vektoriai su partition|
 |---------------------------------------- |-------------------------|---------------------|-------------------|---------------------|
-| Failo nuskaitymas ir vid. skaičiavimas  |               |           |          |           |
-| Įrašų skirstymas į dvi grupes           |               |           |          |           |
-| Įrašų rušiavimas                        |               |           |          |           |
-| Vargšiukų išvedimo į failą laikas       |               |           |          |           |
-| Kietiakų išvedimo į failą laikas        |               |           |          |           |
+| Failo nuskaitymas ir vid. skaičiavimas  |                         |0.04601              |0.04551            |0.04772              |
+| Įrašų skirstymas į dvi grupes           |                         |0.00293              |0.00111            |0.00243              |
+| Įrašų rušiavimas                        |                         |0.00311              |0.00277            |0.00495              |
+| Vargšiukų išvedimo į failą laikas       |                         |0.01024              |0.00741            |0.00749              |
+| Kietiakų išvedimo į failą laikas        |                         |0.01053              |0.01048            |0.00991              |
 
 - ### 100000:
 | Veiksmas                                | 2_strategija vektoriai | 2_strategija listai | list su std::move | vektoriai su partition|
 |---------------------------------------- |-------------------------|---------------------|-------------------|---------------------|
-| Failo nuskaitymas ir vid. skaičiavimas  |               |           |          |           |
-| Įrašų skirstymas į dvi grupes           |               |           |          |           |
-| Įrašų rušiavimas                        |               |           |          |           |
-| Vargšiukų išvedimo į failą laikas       |               |           |          |           |
-| Kietiakų išvedimo į failą laikas        |               |           |          |           |
+| Failo nuskaitymas ir vid. skaičiavimas  |                         |0.30883              |0.30736            |0.29807              |
+| Įrašų skirstymas į dvi grupes           |                         |0.01647              |0.09681            |0.02050              |
+| Įrašų rušiavimas                        |                         |0.03318              |0.03071            |0.04132              |
+| Vargšiukų išvedimo į failą laikas       |                         |0.06888              |0.06812            |0.06614              |
+| Kietiakų išvedimo į failą laikas        |                         |0.10232              |0.09868            |0.09484              |
 
 - ### 1000000:
 | Veiksmas                                | 2_strategija vektoriai | 2_strategija listai | list su std::move | vektoriai su partition|
 |---------------------------------------- |-------------------------|---------------------|-------------------|---------------------|
-| Failo nuskaitymas ir vid. skaičiavimas  |               |           |          |           |
-| Įrašų skirstymas į dvi grupes           |               |           |          |           |
-| Įrašų rušiavimas                        |               |           |          |           |
-| Vargšiukų išvedimo į failą laikas       |               |           |          |           |
-| Kietiakų išvedimo į failą laikas        |               |           |          |           |
+| Failo nuskaitymas ir vid. skaičiavimas  |                         |3.11408             |3.0629              |3.038                |
+| Įrašų skirstymas į dvi grupes           |                         |0.16605             |0.09631             |0.212                |
+| Įrašų rušiavimas                        |                         |0.59988             |0.59602             |0.4088               |
+| Vargšiukų išvedimo į failą laikas       |                         |0.69309             |0.68340             |0.7641               |
+| Kietiakų išvedimo į failą laikas        |                         |0.97004             |0.97382             |0.9576               |
 
 - ### 10000000:
 | Veiksmas                                | 2_strategija vektoriai | 2_strategija listai | list su std::move | vektoriai su partition|
 |---------------------------------------- |-------------------------|---------------------|-------------------|---------------------|
-| Failo nuskaitymas ir vid. skaičiavimas  |               |           |          |           |
-| Įrašų skirstymas į dvi grupes           |               |           |          |           |
-| Įrašų rušiavimas                        |               |           |          |           |
-| Vargšiukų išvedimo į failą laikas       |               |           |          |           |
-| Kietiakų išvedimo į failą laikas        |               |           |          |           |
+| Failo nuskaitymas ir vid. skaičiavimas  |                         |31.7959              |31.1315            |31.8778              |
+| Įrašų skirstymas į dvi grupes           |                         |1.71052              |1.01082            |2.34500              |
+| Įrašų rušiavimas                        |                         |9.87628              |9.86224            |4.09061              |
+| Vargšiukų išvedimo į failą laikas       |                         |7.89672              |7.87886            |7.74810              |
+| Kietiakų išvedimo į failą laikas        |                         |12.6734              |11.4018            |11.2993              |
