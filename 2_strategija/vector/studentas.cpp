@@ -201,14 +201,15 @@ vector<int> generavimas(int pazymiuSk){
     return pazymiai;
 }
 void skirstymas(vector<stud> &vec1, vector<stud> &vargsiukai){
-   auto it=remove_if(vec1.begin(),vec1.end(),[&](const stud &lok){
-       if (lok.vid<5){
-           vargsiukai.push_back(lok);
-           return true;
-       }    
-       return false;
+   sort(vec1.begin(),vec1.end(), [](const stud & a, const stud & b){
+    return a.vid<b.vid;
    });
-    vec1.erase(it,vec1.end());
+   auto it=vec1.begin();
+    while (it !=vec1.end() && it->vid<5){
+        vargsiukai.push_back(*it);
+        ++it;
+    }
+    vec1.erase(vec1.begin(), it);
 }
 
 void failai(int pasirinkimas,stud &temp, vector<stud> &vec1){
