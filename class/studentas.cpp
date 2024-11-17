@@ -4,7 +4,8 @@
 void ivedimas(Student &stud, bool generate)
 {
   cout<<"Iveskite studento varda, pavarde: "<<endl;
-  cin>>stud.getVardas()>>stud.getPavarde();
+  string vardas,pavarde;
+  cin>>vardas>>pavarde;
   stud.setVardas(vardas);
   stud.setPavarde(pavarde);
   if(!generate){
@@ -14,10 +15,10 @@ void ivedimas(Student &stud, bool generate)
     cin>>egz;
     try{
       int Egz=stoi(egz);
-      if (Egz>0 && Egz<=10)
+      if (Egz>0 && Egz<=10){
         stud.setEgz(Egz);
         break;
-      else{
+    } else{
         cout<<"Ivestas egzamino pazymys turi buti intervale nuo 1 iki 10"<<endl;
       }
     } catch (const invalid_argument&) {
@@ -41,16 +42,16 @@ void output2(const Student& stud)
   cout<<setw(10)<<left<<stud.getVardas()<<setw(13)<<left<<stud.getPavarde()<<setw(20)<<left<<fixed
   <<setprecision(2)<<stud.getVid()<<setw(20)<<left<<fixed<<setprecision(2)<<stud.getMed()<<endl;
 }
-// void valymas(stud &lok){
-//     lok.vardas.clear();
-//     lok.pavarde.clear();
-//     lok.ND.clear();
-// }
+void valymas(Student& stud){
+    stud.setVardas("");
+    stud.setPavarde("");
+    stud.setEgz(0);
+    stud.setND({});
+    stud.setMed();
+    stud.setVid();
+}
 void vidurkis(Student& stud)
 {
-    double sum=0;
-    for(int n:stud.getND())
-        sum+=n;
     stud.Vidurkis();
 }
 void mediana(Student& stud)
@@ -70,7 +71,8 @@ void namu_darbai(Student& stud)
         try{
             int temp1=stoi(input);
             if (temp1>0 && temp1<=10){
-                stud.setND(temp1);
+                list<int> pazymiai;
+                pazymiai.push_back(temp1);
                 counter++;
             } else{
                 cout<<"Ivestas pazymys turi buti intervale nuo 1 iki 10. Bandykite dar karta"<<endl;
@@ -97,36 +99,36 @@ void skaitymas(Student& stud, ifstream &inFile)
     iss>>vardas>>pavarde;
     stud.setVardas(vardas);
     stud.setPavarde(pavarde);
-
+    list<int> pazymiai;
     int pazymys;
     while (iss >> pazymys){
         pazymiai.push_back(pazymys);
     }
-    list<int> pazymiai=stud.getND();
+    stud.setND(pazymiai);
     if(!pazymiai.empty()){
-        stud.setEgz(ND.back());
+        stud.setEgz(pazymiai.back());
     }
     else{
         stud.setEgz(0);
     }
 }
-bool compareByName(const stud &a, const stud &b) {
-    return a.vardas < b.vardas;
+bool compareByName(const Student &a, const Student &b) {
+    return a.getVardas() < b.getVardas();
 }
-bool compareByLastName(const stud &a, const stud &b) {
-    return a.pavarde < b.pavarde;
+bool compareByLastName(const Student &a, const Student &b) {
+    return a.getPavarde() < b.getPavarde();
 }
-void rusiavimasVardas(list<stud> &lst1){
+void rusiavimasVardas(list<Student> &lst1){
     lst1.sort(compareByName);
 }
-void rusiavimasPavarde(list<stud> &lst1){
+void rusiavimasPavarde(list<Student> &lst1){
     lst1.sort(compareByLastName);
 }
-void rusiavimasVidurkis(list<stud> &lst1){
+void rusiavimasVidurkis(list<Student> &lst1){
     lst1.sort(compareByAverage);
 }
-bool compareByAverage(const stud &a, const stud &b) {
-    return a.vid > b.vid;
+bool compareByAverage(const Student &a, const Student &b) {
+    return a.getVid() > b.getVid();
 }
 bool tikrinam(string & fileName){
     ifstream inFile(fileName.c_str());
@@ -141,7 +143,7 @@ void IsvedimasV(const list <Student>& vargsiukai){
     Vargsiukai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Vargsiukai<<"\n------------------------------------------------------------\n";
     for (const Student &stud:vargsiukai){
-        Vargsiukai<<setw(16)<<left<<stud.getVardas()<<setw(16)<<left<<stud.getPavarde()<<setw(10)<<left<<stud.getVid()<<endl;
+        Vargsiukai<<setw(16)<<left<<stud.getVardas()<<setw(16)<<left<<stud.getPavarde()<<setw(10)<<left<<setprecision(2)<<stud.getVid()<<endl;
     }
     Vargsiukai.close();
 
@@ -151,7 +153,7 @@ void IsvedimasK(const list <Student>& kietiakai){
     Kietiakai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Kietiakai<<"\n------------------------------------------------------------\n";
      for (const Student &stud:kietiakai){
-        Kietiakai<<setw(16)<<left<<stud.getVardas()<<setw(16)<<left<<stud.getPavarde()<<setw(10)<<left<<stud.getVid()<<endl;
+        Kietiakai<<setw(16)<<left<<stud.getVardas()<<setw(16)<<left<<stud.getPavarde()<<setw(10)<<left<<setprecision(2)<<stud.getVid()<<endl;
     }
     Kietiakai.close();
 
@@ -194,8 +196,8 @@ vector<int> generavimas(int pazymiuSk){
     return pazymiai;
 }
 void skirstymas(list<Student> &lst1, list<Student> &vargsiukai){
-    for(auto it=lst1.begin(); it!=lst1.end();){
-        if (it->vid<5){
+    for(list<Student>::iterator it=lst1.begin(); it!=lst1.end();){
+        if (it->getVid()<5){
             vargsiukai.push_back((std::move)(*it));
             it=lst1.erase(it);
         } else{
@@ -217,6 +219,7 @@ void failai(int pasirinkimas,Student &stud, list<Student> &lst1){
        }
        string pirma;
        getline(inFile,pirma);
+       Student temp;
        while(!inFile.eof()){
           skaitymas(temp,inFile);
           if (inFile.eof())
@@ -226,7 +229,7 @@ void failai(int pasirinkimas,Student &stud, list<Student> &lst1){
        }
        inFile.close();
        cout<<"Failo nuskaitymo ir vidurkio skaciavimo laikas: "<<nuskaitymasTimer.getElapsedTime()<<"s"<<endl;
-       list<stud> vargsiukai, kietiakai;
+       list<Student> vargsiukai, kietiakai;
        ChronoTimer skirstymasTimer;
        skirstymas(lst1,vargsiukai);
        cout<<"Studentu skirstymo i dvi grupes laikas: "<<skirstymasTimer.getElapsedTime()<<"s"<<endl;

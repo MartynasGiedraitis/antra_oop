@@ -68,10 +68,10 @@ int main (){
             cout<<"Iveskite "<<i+1<<" studento duomenis "<<endl;
             valymas(temp);
             ivedimas(temp,generate);
-
+            list<int> randomND;
             if (generate) {
                 for (int j=0; j<n; j++)
-                    temp.ND.push_back(randomize(1,10));
+                    randomND.push_back(randomize(1,10));
         } 
             else{
                 namu_darbai(temp);
@@ -95,12 +95,12 @@ int main (){
             cout << setw(10) << left << "Vardas" << setw(12) << left << "Pavardė" << setw(20) << left << "Galutinis (Vid.)"<<setw(15)<<left<< "Saugojimo ad.";
             cout<<"\n---------------------------------------------------------\n";
 
-            for(list<stud>::iterator it=lst1.begin();it!=lst1.end();it++)
+            for(list<Student>::iterator it=lst1.begin();it!=lst1.end();it++)
                 outputVID(*it);
     } else if (c==2) {
             cout << setw(10) << left << "Vardas" << setw(10) << left << "Pavardė" << setw(20) << left << "Galutinis (Med.)"<<setw(15)<<left<< "Saugojimo ad.";
             cout<<"\n--------------------------------------------\n";
-            for(list<stud>::iterator it=lst1.begin();it!=lst1.end();it++)
+            for(list<Student>::iterator it=lst1.begin();it!=lst1.end();it++)
                 outputMED(*it);
     } 
     else {

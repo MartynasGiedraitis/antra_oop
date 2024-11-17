@@ -5,24 +5,20 @@
 class Student
 {
 private:
-    std::string vardas,pavarde;
+    std::string vardas;
+    std::string pavarde;
     std::vector<int> ND;
     int egz;
     double med,vid;
 public:
-    Student() : egz(0),vid(0.0),med(0.0){}
+    Student() : vardas(""), pavarde(""), med(0.0),vid(0.0) {}
 
-    vector<int> getND() const { return ND; }
-    void setND(const list<int> &ND) {
-         this->ND.clear();
-         for (int n:ND)
-             this->ND.push_back(n);
-         }
-    }
+    Student(std::string vardas, std::string pavarde) 
+        : vardas(vardas), pavarde(pavarde), med(0.0),vid(0.0) {}
+
     std::string getVardas() const { return vardas; }
     std::string getPavarde() const { return pavarde; }
     std::vector<int> getND() const { return ND; }
-    int getEgz() const { return egz; }
     double getMed() const { return med; }
     double getVid() const { return vid; }
 
@@ -30,22 +26,44 @@ public:
     void setPavarde(std::string pavarde) { this->pavarde = pavarde; }
     void setEgz(int egz) { this->egz = egz; }
     void addND(int nd) { ND.push_back(nd); }
+    void setND(const std::list<int>& ND) {
+        this->ND.clear();
+        for (int n : ND)
+            this->ND.push_back(n);
+        
+    }
+    void setMed() {
+       if (!ND.empty()) {
+        std::sort(ND.begin(), ND.end());
 
-    void Vidurkis(){
-        double sum=0;
-        for(int n:ND)
-            sum+=n;
-        double ndAvg;
-        if (ND.size()>0)
-            ndAvg=sum/ND.size();
-        else
-            ndAvg=0;
-        vid=0.4*ndAvg+0.6*egz;
+        size_t n = ND.size();
+        if (n % 2 == 0) {
+            med = (ND[n / 2 - 1] + ND[n / 2]) / 2.0;
+        } else {
+            med = ND[n / 2];
+        }
+    }
+    }
+       void setVid() {
+        if (!ND.empty()) {
+            double sum = 0;
+            for (int n : ND) {
+                sum += n;
+            }
+            vid = sum / ND.size(); 
+        }
+    }
+    void Vidurkis() {
+        double sum = 0;
+        for (int n : ND) {
+            sum += n;
+        }
+        double ndAvg = (ND.size() > 0) ? sum / ND.size() : 0;
+        vid = 0.4 * ndAvg + 0.6 * egz; 
     }
 
     void Mediana(){
         sort(ND.begin(),ND.end());
-        double med;
         if (ND.size()==0)
             med=0;
         else if (ND.size()%2==0)
