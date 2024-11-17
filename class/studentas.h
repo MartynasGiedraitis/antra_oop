@@ -12,6 +12,13 @@ private:
 public:
     Student() : egz(0),vid(0.0),med(0.0){}
 
+    vector<int> getND() const { return ND; }
+    void setND(const list<int> &ND) {
+         this->ND.clear();
+         for (int n:ND)
+             this->ND.push_back(n);
+         }
+    }
     std::string getVardas() const { return vardas; }
     std::string getPavarde() const { return pavarde; }
     std::vector<int> getND() const { return ND; }
@@ -24,7 +31,7 @@ public:
     void setEgz(int egz) { this->egz = egz; }
     void addND(int nd) { ND.push_back(nd); }
 
-    void vidurkis(){
+    void Vidurkis(){
         double sum=0;
         for(int n:ND)
             sum+=n;
@@ -36,7 +43,7 @@ public:
         vid=0.4*ndAvg+0.6*egz;
     }
 
-    void mediana(){
+    void Mediana(){
         sort(ND.begin(),ND.end());
         double med;
         if (ND.size()==0)
@@ -61,27 +68,28 @@ public:
 private:
     std::chrono::high_resolution_clock::time_point start_time;
 };
-void ivedimas(stud &lok,bool generate);
-void outputVID(const stud &lok);
-void valymas(stud &lok);
-void vidurkis(stud &lok);
-void mediana(stud &lok);
-void namu_darbai(stud &lok);
-void skaitymas(stud &lok, std:: ifstream &inFile);
+void ivedimas(Student &lok, bool generate); 
+void outputVID(const Student &lok);
+void valymas(Student &lok);
+void vidurkis(Student &lok);
+void mediana(Student &lok);
+void namu_darbai(Student &lok);
+void skaitymas(Student &lok, std::ifstream &inFile);
 int randomize(int min, int max);
-void output2(const stud &lok);
-void rusiavimas(std::list<stud> &lst1);
-bool compare(const stud &a, const stud &b);
-bool tikrinam(string & fileName);
-void outputMED(const stud &lok);
-void rusiavimasPavarde(std::list<stud> &lst1);
-void rusiavimasVardas(std::list<stud> &lst1);
+void output2(const Student &lok);
+void rusiavimas(std::list<Student> &lst1);
+bool compare(const Student &a, const Student &b);
+bool tikrinam(string &fileName);
+void outputMED(const Student &lok);
+void rusiavimasPavarde(std::list<Student> &lst1);
+void rusiavimasVardas(std::list<Student> &lst1);
 void failoGeneravimas();
 vector<int> generavimas(int pazymiuSk);
-void skirstymas(list<stud> &lst1, list<stud> &vargsiukai);
-void IsvedimasV(const list<stud>& vargsiukai);
-void IsvedimasK(const list <stud>& lst1);
-void failai(int pasirinkimas,stud &temp, list<stud> &lst1);
-void rusiavimasVidurkis(list<stud> &list1);
-bool compareByAverage(const stud &a, const stud &b);
+void skirstymas(std::list<Student> &lst1, std::list<Student> &vargsiukai);
+void IsvedimasV(const std::list<Student> &vargsiukai);
+void IsvedimasK(const std::list<Student> &lst1);
+void failai(int pasirinkimas, Student &temp, std::list<Student> &lst1);
+void rusiavimasVidurkis(std::list<Student> &list1);
+bool compareByAverage(const Student &a, const Student &b);
+
 #endif // STUD_H_INCLUDED

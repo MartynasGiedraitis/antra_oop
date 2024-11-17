@@ -13,8 +13,8 @@
 
 int main (){
     srand(time(0));
-    list<stud>lst1;
-    stud temp;
+    list<Student>lst1;
+    Student temp;
     int c,k,p,n,r,j,g,pasirinkimas;
     string fileName;
     while (true) {

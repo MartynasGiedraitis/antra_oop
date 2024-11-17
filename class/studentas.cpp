@@ -5,6 +5,8 @@ void ivedimas(Student &stud, bool generate)
 {
   cout<<"Iveskite studento varda, pavarde: "<<endl;
   cin>>stud.getVardas()>>stud.getPavarde();
+  stud.setVardas(vardas);
+  stud.setPavarde(pavarde);
   if(!generate){
     string egz;
     while(true){
@@ -34,42 +36,28 @@ void outputMED(const Student& stud)
 {
  cout<<setw(10)<<left<<stud.getVardas()<<setw(13)<<left<<stud.getPavarde()<<setw(20)<<left<<fixed<<setprecision(2)<<stud.getMed()<<endl;
 }
-void output2(const stud &lok)
+void output2(const Student& stud)
 {
-  cout<<setw(14)<<left<<lok.vardas<<setw(14)<<left<<lok.pavarde<<setw(14)
-  <<right<<fixed<<setprecision(2)<<lok.vid
-  <<setw(14)<<right<<fixed<<setprecision(2)<<lok.med<<endl;
+  cout<<setw(10)<<left<<stud.getVardas()<<setw(13)<<left<<stud.getPavarde()<<setw(20)<<left<<fixed
+  <<setprecision(2)<<stud.getVid()<<setw(20)<<left<<fixed<<setprecision(2)<<stud.getMed()<<endl;
 }
-void valymas(stud &lok){
-    lok.vardas.clear();
-    lok.pavarde.clear();
-    lok.ND.clear();
-}
-void vidurkis(stud &lok)
+// void valymas(stud &lok){
+//     lok.vardas.clear();
+//     lok.pavarde.clear();
+//     lok.ND.clear();
+// }
+void vidurkis(Student& stud)
 {
     double sum=0;
-    for(int n:lok.ND)
+    for(int n:stud.getND())
         sum+=n;
-    double ndAvg;
-    if (lok.ND.size()>0)
-        ndAvg=sum/lok.ND.size();
-    else
-        ndAvg=0;
-    lok.vid=0.4*ndAvg+0.6*lok.egz;
+    stud.Vidurkis();
 }
-void mediana(stud &lok)
+void mediana(Student& stud)
 {   
-    sort(lok.ND.begin(),lok.ND.end());
-    double med;
-    if (lok.ND.size()==0)
-        med=0;
-    else if (lok.ND.size()%2==0)
-        med=(lok.ND[lok.ND.size()/2-1]+lok.ND[lok.ND.size()/2])/2.0;
-    else
-        med=lok.ND[lok.ND.size()/2];
-    lok.med=0.4*med+0.6*lok.egz;
+    stud.Mediana();
 }
-void namu_darbai(stud &lok)
+void namu_darbai(Student& stud)
 {   
     int counter=1;
     cout<<"Iveskite namu darbu pazymius"<<endl;
@@ -82,7 +70,7 @@ void namu_darbai(stud &lok)
         try{
             int temp1=stoi(input);
             if (temp1>0 && temp1<=10){
-                lok.ND.push_back(temp1);
+                stud.setND(temp1);
                 counter++;
             } else{
                 cout<<"Ivestas pazymys turi buti intervale nuo 1 iki 10. Bandykite dar karta"<<endl;
@@ -98,25 +86,28 @@ int randomize(int min, int max){
     std::uniform_int_distribution<> distrib (min,max);
     return distrib(gen);
 }
-void skaitymas(stud &lok, ifstream &inFile)
+void skaitymas(Student& stud, ifstream &inFile)
 {    
     string line;
     getline(inFile, line);
     if (line.empty())
         return;
     istringstream iss(line);
-    iss>>lok.vardas>>lok.pavarde;
-    lok.ND.clear();
-    int temp2;
-    while (iss >> temp2){
-        lok.ND.push_back(temp2);
+    string vardas,pavarde;
+    iss>>vardas>>pavarde;
+    stud.setVardas(vardas);
+    stud.setPavarde(pavarde);
+
+    int pazymys;
+    while (iss >> pazymys){
+        pazymiai.push_back(pazymys);
     }
-    if (lok.ND.size()>0){
-        lok.egz=lok.ND.back();
-        lok.ND.pop_back();
+    list<int> pazymiai=stud.getND();
+    if(!pazymiai.empty()){
+        stud.setEgz(ND.back());
     }
     else{
-        lok.egz=0;
+        stud.setEgz(0);
     }
 }
 bool compareByName(const stud &a, const stud &b) {
@@ -145,22 +136,22 @@ bool tikrinam(string & fileName){
     }
     return true;
 }
-void IsvedimasV(const list <stud>& vargsiukai){
+void IsvedimasV(const list <Student>& vargsiukai){
     ofstream Vargsiukai("vargsiukai.txt");
     Vargsiukai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Vargsiukai<<"\n------------------------------------------------------------\n";
-    for (const stud &lok:vargsiukai){
-        Vargsiukai<<setw(16)<<left<<lok.vardas<<setw(16)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
+    for (const Student &stud:vargsiukai){
+        Vargsiukai<<setw(16)<<left<<stud.getVardas()<<setw(16)<<left<<stud.getPavarde()<<setw(10)<<left<<stud.getVid()<<endl;
     }
     Vargsiukai.close();
 
 }
-void IsvedimasK(const list <stud>& kietiakai){
+void IsvedimasK(const list <Student>& kietiakai){
     ofstream Kietiakai("Kietiakai.txt");
     Kietiakai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Kietiakai<<"\n------------------------------------------------------------\n";
-    for (const stud &lok:kietiakai){
-        Kietiakai<<setw(16)<<left<<lok.vardas<<setw(16)<<left<<lok.pavarde<<setw(10)<<left<<lok.vid<<endl;
+     for (const Student &stud:kietiakai){
+        Kietiakai<<setw(16)<<left<<stud.getVardas()<<setw(16)<<left<<stud.getPavarde()<<setw(10)<<left<<stud.getVid()<<endl;
     }
     Kietiakai.close();
 
@@ -202,7 +193,7 @@ vector<int> generavimas(int pazymiuSk){
     }
     return pazymiai;
 }
-void skirstymas(list<stud> &lst1, list<stud> &vargsiukai){
+void skirstymas(list<Student> &lst1, list<Student> &vargsiukai){
     for(auto it=lst1.begin(); it!=lst1.end();){
         if (it->vid<5){
             vargsiukai.push_back((std::move)(*it));
@@ -212,7 +203,7 @@ void skirstymas(list<stud> &lst1, list<stud> &vargsiukai){
         }
     }
 }
-void failai(int pasirinkimas,stud &temp, list<stud> &lst1){
+void failai(int pasirinkimas,Student &stud, list<Student> &lst1){
     const int studentuSk[]={1000, 10000, 100000, 1000000, 10000000};
     ChronoTimer bendrasTimer;
     for (int studentuSkaicius:studentuSk){
