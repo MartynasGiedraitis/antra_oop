@@ -26,11 +26,8 @@ public:
     void setPavarde(std::string pavarde) { this->pavarde = pavarde; }
     void setEgz(int egz) { this->egz = egz; }
     void addND(int nd) { ND.push_back(nd); }
-    void setND(const std::list<int>& ND) {
-        this->ND.clear();
-        for (int n : ND)
-            this->ND.push_back(n);
-        
+    void setND(std::vector<int>&& ND) {
+        this->ND = std::move(ND); 
     }
     void setMed() {
        if (!ND.empty()) {

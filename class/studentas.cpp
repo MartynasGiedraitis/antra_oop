@@ -100,12 +100,12 @@ void skaitymas(Student& stud, ifstream &inFile)
     iss>>vardas>>pavarde;
     stud.setVardas(vardas);
     stud.setPavarde(pavarde);
-    list<int> pazymiai;
+    vector<int> pazymiai;
     int pazymys;
     while (iss >> pazymys){
         pazymiai.push_back(pazymys);
     }
-    stud.setND(pazymiai);
+    stud.setND(std::move(pazymiai));
     if(!pazymiai.empty()){
         stud.setEgz(pazymiai.back());
     }
