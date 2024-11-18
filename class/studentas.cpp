@@ -25,7 +25,9 @@ void ivedimas(Student &stud, bool generate)
       cout<<"Ivestas ne skaicius. Bandykite dar karta"<<endl;
         }
     }
-  } else{
+    cin.ignore();
+  } 
+  else{
     stud.setEgz(randomize(1,10));
   }
 }
@@ -71,8 +73,7 @@ void namu_darbai(Student& stud)
         try{
             int temp1=stoi(input);
             if (temp1>0 && temp1<=10){
-                list<int> pazymiai;
-                pazymiai.push_back(temp1);
+                stud.addND(temp1);
                 counter++;
             } else{
                 cout<<"Ivestas pazymys turi buti intervale nuo 1 iki 10. Bandykite dar karta"<<endl;
