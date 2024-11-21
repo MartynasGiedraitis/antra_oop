@@ -1,6 +1,10 @@
 #include "studentas.h"
 #include "mylib.h"
 
+Student::Student(std::ifstream &file)
+{
+    skaitymas(file);
+}
 void ivedimas(Student &stud, bool generate)
 {
   cout<<"Iveskite studento varda, pavarde: "<<endl;
@@ -33,34 +37,54 @@ void ivedimas(Student &stud, bool generate)
 }
 void outputVID(const Student& stud)
 {
-  cout<<setw(10)<<left<<stud.getVardas()<<setw(13)<<left<<stud.getPavarde()<<setw(20)<<left<<fixed<<setprecision(2)<<stud.getVid()<<endl;
+  cout<<setw(10)<<left<<stud.vardas()<<setw(13)<<left<<stud.pavarde()<<setw(20)<<left<<fixed<<setprecision(2)<<stud.getVid()<<endl;
 }
 void outputMED(const Student& stud)
 {
- cout<<setw(10)<<left<<stud.getVardas()<<setw(13)<<left<<stud.getPavarde()<<setw(20)<<left<<fixed<<setprecision(2)<<stud.getMed()<<endl;
+ cout<<setw(10)<<left<<stud.vardas()<<setw(13)<<left<<stud.pavarde()<<setw(20)<<left<<fixed<<setprecision(2)<<stud.getMed()<<endl;
 }
 void output2(const Student& stud)
 {
-  cout<<setw(10)<<left<<stud.getVardas()<<setw(13)<<left<<stud.getPavarde()<<setw(20)<<left<<fixed
+  cout<<setw(10)<<left<<stud.vardas()<<setw(13)<<left<<stud.pavarde()<<setw(20)<<left<<fixed
   <<setprecision(2)<<stud.getVid()<<setw(20)<<left<<fixed<<setprecision(2)<<stud.getMed()<<endl;
 }
-void valymas(Student& stud){
-    stud.setVardas("");
-    stud.setPavarde("");
-    stud.setEgz(0);
-    stud.setND({});
-    stud.setMed();
-    stud.setVid();
+void Student::valymas(){
+    vardas_.clear();  
+    pavarde_.clear();
+    egz=0;
+    ND.clear();
+    med=0.0;
+    vid=0.0;
 }
-void vidurkis(Student& stud)
+double Student::vidurkis()
 {
-    stud.Vidurkis();
+    if (ND.empty())
+        return 0;
+    
+    double sum=0;
+    for (int pazymys:ND){
+        sum+=pazymys;
+    }
+    double rez=sum/ND.size();
+    double finalrez=rez*0.4+egz*0.6;
+    vid=finalrez;
+    return finalrez;
+    
 }
-void mediana(Student& stud)
+double Student::mediana()
 {   
-    stud.Mediana();
+    double Mediana=medSK(ND);
+    med=Mediana*0.4+egz*0.6;
+    return med;
 }
-void namu_darbai(Student& stud)
+double Student::medSK(std::vector<int> paz){
+    if (paz.empty())
+        return 0;
+    std::sort(paz.begin(),paz.end());
+    size_t n=paz.size();
+    return n%2==0 ? (paz[n/2-1]+paz[n/2])/2.0 : paz[n/2];
+}
+void Student::namu_darbai()
 {   
     int counter=1;
     cout<<"Iveskite namu darbu pazymius"<<endl;
@@ -73,7 +97,7 @@ void namu_darbai(Student& stud)
         try{
             int temp1=stoi(input);
             if (temp1>0 && temp1<=10){
-                stud.addND(temp1);
+                ND.push_back(temp1);
                 counter++;
             } else{
                 cout<<"Ivestas pazymys turi buti intervale nuo 1 iki 10. Bandykite dar karta"<<endl;
@@ -89,48 +113,38 @@ int randomize(int min, int max){
     std::uniform_int_distribution<> distrib (min,max);
     return distrib(gen);
 }
-void skaitymas(Student& stud, ifstream &inFile)
+void Student::skaitymas(std::ifstream &file)
 {    
     string line;
-    getline(inFile, line);
+    getline(file, line);
     if (line.empty())
         return;
-    istringstream iss(line);
-    string vardas,pavarde;
-    iss>>vardas>>pavarde;
-    stud.setVardas(vardas);
-    stud.setPavarde(pavarde);
-    vector<int> pazymiai;
+    std::istringstream iss(line);
+    iss>>vardas_>>pavarde_;
+    ND.clear();
     int pazymys;
     while (iss >> pazymys){
-        pazymiai.push_back(pazymys);
+        ND.push_back(pazymys);
     }
-    stud.setND(std::move(pazymiai));
-    if(!pazymiai.empty()){
-        stud.setEgz(pazymiai.back());
+    if(!ND.empty()){
+       egz=ND.back();
+       ND.pop_back();
     }
     else{
-        stud.setEgz(0);
+        egz=0;
     }
 }
-bool compareByName(const Student &a, const Student &b) {
-    return a.getVardas() < b.getVardas();
-}
-bool compareByLastName(const Student &a, const Student &b) {
-    return a.getPavarde() < b.getPavarde();
-}
+
 void rusiavimasVardas(list<Student> &lst1){
-    lst1.sort(compareByName);
+    lst1.sort(Student::compareByName);
 }
 void rusiavimasPavarde(list<Student> &lst1){
-    lst1.sort(compareByLastName);
+    lst1.sort(Student::compareByLastName);
 }
 void rusiavimasVidurkis(list<Student> &lst1){
-    lst1.sort(compareByAverage);
+    lst1.sort(Student::compareByAverage);
 }
-bool compareByAverage(const Student &a, const Student &b) {
-    return a.getVid() > b.getVid();
-}
+
 bool tikrinam(string & fileName){
     ifstream inFile(fileName.c_str());
     if(!inFile){
@@ -144,7 +158,7 @@ void IsvedimasV(const list <Student>& vargsiukai){
     Vargsiukai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Vargsiukai<<"\n------------------------------------------------------------\n";
     for (const Student &stud:vargsiukai){
-        Vargsiukai<<setw(16)<<left<<stud.getVardas()<<setw(16)<<left<<stud.getPavarde()<<setw(10)<<left<<setprecision(2)<<stud.getVid()<<endl;
+        Vargsiukai<<setw(16)<<left<<stud.vardas()<<setw(16)<<left<<stud.pavarde()<<setw(10)<<left<<setprecision(2)<<stud.getVid()<<endl;
     }
     Vargsiukai.close();
 
@@ -154,7 +168,7 @@ void IsvedimasK(const list <Student>& kietiakai){
     Kietiakai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Kietiakai<<"\n------------------------------------------------------------\n";
      for (const Student &stud:kietiakai){
-        Kietiakai<<setw(16)<<left<<stud.getVardas()<<setw(16)<<left<<stud.getPavarde()<<setw(10)<<left<<setprecision(2)<<stud.getVid()<<endl;
+        Kietiakai<<setw(16)<<left<<stud.vardas()<<setw(16)<<left<<stud.pavarde()<<setw(10)<<left<<setprecision(2)<<stud.getVid()<<endl;
     }
     Kietiakai.close();
 
@@ -222,10 +236,10 @@ void failai(int pasirinkimas,Student &stud, list<Student> &lst1){
        getline(inFile,pirma);
        Student temp;
        while(!inFile.eof()){
-          skaitymas(temp,inFile);
+          temp.skaitymas(inFile);
           if (inFile.eof())
               break;
-          vidurkis(temp);
+          temp.vidurkis();
           lst1.push_back(temp); 
        }
        inFile.close();

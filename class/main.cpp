@@ -66,21 +66,23 @@ int main (){
         for(int i=0;i<k;i++)
         {
             cout<<"Iveskite "<<i+1<<" studento duomenis "<<endl;
-            valymas(temp);
+            temp.valymas();
             ivedimas(temp,generate);
-            list<int> randomND;
+            vector<int> randomND;
             if (generate) {
-                for (int j=0; j<n; j++)
+                for (int j=0; j<n; j++){
                     randomND.push_back(randomize(1,10));
+                }
+            temp.setND(randomND);
         } 
             else{
-                namu_darbai(temp);
-                } 
+                temp.namu_darbai();
+            }
             if (c == 1) {
-            vidurkis(temp);
+            temp.vidurkis();
         } 
             else if (c == 2) {
-            mediana(temp);
+            temp.mediana();
             }
             lst1.push_back(temp);
 

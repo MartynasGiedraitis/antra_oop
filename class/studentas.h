@@ -5,70 +5,44 @@
 class Student
 {
 private:
-    std::string vardas;
-    std::string pavarde;
+    std::string vardas_;
+    std::string pavarde_;
     std::vector<int> ND;
     int egz;
     double med,vid;
+
 public:
-    Student() : vardas(""), pavarde(""), med(0.0),vid(0.0) {}
+    Student() : vardas_(""), pavarde_(""), egz(0), med(0.0),vid(0.0) {}
+    Student(std::ifstream& is);
 
-    Student(std::string vardas, std::string pavarde) 
-        : vardas(vardas), pavarde(pavarde), med(0.0),vid(0.0) {}
+    inline std::string vardas() const { return vardas_; }
+    inline std::string pavarde() const { return pavarde_; }
+    inline double getVid() const { return vid; }
+    inline double getMed() const { return med; }
+    inline void setVardas(const std::string& vardas) { vardas_ = vardas; }  
+    inline void setPavarde(const std::string& pavarde) { pavarde_ = pavarde; }
+    inline void setEgz(int egzaminas) { egz = egzaminas; }
+    inline void setND(std::vector<int> pazymiai) { ND=pazymiai;}
+    inline const std::vector<int>& getND() const { return ND; }
 
-    std::string getVardas() const { return vardas; }
-    std::string getPavarde() const { return pavarde; }
-    std::vector<int> getND() const { return ND; }
-    double getMed() const { return med; }
-    double getVid() const { return vid; }
+    static bool compareByName(const Student &a, const Student &b) {
+    return a.vardas_ < b.vardas_;
+    }
+    static bool compareByLastName(const Student &a, const Student &b) {
+    return a.pavarde_ < b.pavarde_;
+    }
+    static bool compareByAverage(const Student &a, const Student &b) {
+    return a.getVid() > b.getVid();
+    }       
 
-    void setVardas(std::string vardas) { this->vardas = vardas; }
-    void setPavarde(std::string pavarde) { this->pavarde = pavarde; }
-    void setEgz(int egz) { this->egz = egz; }
-    void addND(int nd) { ND.push_back(nd); }
-    void setND(std::vector<int>&& ND) {
-        this->ND = std::move(ND); 
-    }
-    void setMed() {
-       if (!ND.empty()) {
-        std::sort(ND.begin(), ND.end());
+    void valymas();
+    void namu_darbai();
+    void skaitymas(std::ifstream &file);
+    double vidurkis();
+    double mediana();
+    double medSK(std::vector<int> paz);
+    
 
-        size_t n = ND.size();
-        if (n % 2 == 0) {
-            med = (ND[n / 2 - 1] + ND[n / 2]) / 2.0;
-        } else {
-            med = ND[n / 2];
-        }
-    }
-    }
-       void setVid() {
-        if (!ND.empty()) {
-            double sum = 0;
-            for (int n : ND) {
-                sum += n;
-            }
-            vid = sum / ND.size(); 
-        }
-    }
-    void Vidurkis() {
-        double sum = 0;
-        for (int n : ND) {
-            sum += n;
-        }
-        double ndAvg = (ND.size() > 0) ? sum / ND.size() : 0;
-        vid = 0.4 * ndAvg + 0.6 * egz; 
-    }
-
-    void Mediana(){
-        sort(ND.begin(),ND.end());
-        if (ND.size()==0)
-            med=0;
-        else if (ND.size()%2==0)
-            med=(ND[ND.size()/2-1]+ND[ND.size()/2])/2.0;
-        else
-            med=ND[ND.size()/2];
-        med=0.4*med+0.6*egz;
-    }
 };
 class ChronoTimer {
 public:
@@ -85,11 +59,11 @@ private:
 };
 void ivedimas(Student &lok, bool generate); 
 void outputVID(const Student &lok);
-void valymas(Student &lok);
-void vidurkis(Student &lok);
-void mediana(Student &lok);
-void namu_darbai(Student &lok);
-void skaitymas(Student &lok, std::ifstream &inFile);
+void valymas();
+double vidurkis();
+double mediana();
+void namu_darbai();
+void skaitymas(std::ifstream &file);
 int randomize(int min, int max);
 void output2(const Student &lok);
 void rusiavimas(std::list<Student> &lst1);
@@ -106,5 +80,6 @@ void IsvedimasK(const std::list<Student> &lst1);
 void failai(int pasirinkimas, Student &temp, std::list<Student> &lst1);
 void rusiavimasVidurkis(std::list<Student> &list1);
 bool compareByAverage(const Student &a, const Student &b);
+double medSK(std::vector<int> paz);
 
 #endif // STUD_H_INCLUDED
