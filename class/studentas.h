@@ -13,7 +13,7 @@ private:
 
 public:
     Student() : vardas_(""), pavarde_(""), egz(0), med(0.0),vid(0.0) {}
-    Student(std::ifstream& is);
+    Student(std::ifstream& file);
 
     inline std::string vardas() const { return vardas_; }
     inline std::string pavarde() const { return pavarde_; }
