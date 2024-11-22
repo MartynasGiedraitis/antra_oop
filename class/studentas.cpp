@@ -154,7 +154,7 @@ void IsvedimasV(const list <Student>& vargsiukai){
     Vargsiukai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Vargsiukai<<"\n------------------------------------------------------------\n";
     for (const Student &stud:vargsiukai){
-        Vargsiukai<<setw(16)<<left<<stud.vardas()<<setw(16)<<left<<stud.pavarde()<<setw(10)<<left<<setprecision(2)<<stud.getVid()<<endl;
+        Vargsiukai<<setw(16)<<left<<stud.vardas()<<setw(16)<<left<<stud.pavarde()<<setw(10)<<left<<stud.getVid()<<endl;
     }
     Vargsiukai.close();
 
@@ -164,7 +164,7 @@ void IsvedimasK(const list <Student>& kietiakai){
     Kietiakai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Kietiakai<<"\n------------------------------------------------------------\n";
      for (const Student &stud:kietiakai){
-        Kietiakai<<setw(16)<<left<<stud.vardas()<<setw(16)<<left<<stud.pavarde()<<setw(10)<<left<<setprecision(2)<<stud.getVid()<<endl;
+        Kietiakai<<setw(16)<<left<<stud.vardas()<<setw(16)<<left<<stud.pavarde()<<setw(10)<<left<<stud.getVid()<<endl;
     }
     Kietiakai.close();
 
@@ -209,6 +209,8 @@ vector<int> generavimas(int pazymiuSk){
 void skirstymas(list<Student> &lst1, list<Student> &vargsiukai){
     for(list<Student>::iterator it=lst1.begin(); it!=lst1.end();){
         if (it->getVid()<5){
+             std::cout << "Moving student to vargsiukai: " << it->vardas() << " " << it->pavarde() 
+              << " with vid: " << it->getVid() << std::endl;
             vargsiukai.push_back(std::move(*it));
             it=lst1.erase(it);
         } else{
