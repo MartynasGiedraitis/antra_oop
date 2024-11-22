@@ -282,7 +282,7 @@ Pasirinkta v1.0 grečiausiai veikusi strategija t.y 3 startegija su list tipo ko
 
 ## Atlikta spartos analizė:
 Buvo palyginti klasės ir struktūros programų laikai su 1mln ir 10mln studentų duomenų failais.
-Taipogi
+Taipogi aprašyta klasės spartos analizė naudojant 3 skirtingus flag'us (O1,O2,O3).
 
 ## Klasės ir struktūros laikai su 1mln ir 10mln:
 ### - 10mln:
@@ -298,21 +298,35 @@ Taipogi
 | Struct | 3.06290| 0.16349 | 0.59602 | 0.68340 | 0.97382 |
 | Class| 3.15883 | 0.19348 | 0.6699 | 0.6981 | 1.00531 |
 
-## Class laikai naudojant optimizavimo strategijas:
+## Class ir Struct laikai naudojant optimizavimo strategijas:
 
-### -10mln:
+### -10mln su class :
 | Optimizavimo lygis |  Failo nuskaitymas ir vid. skaičiavimas  |Skirstymas į grupes   | Rūšiavimas   | Vargšiukų išvedimas   | Kietiakų išvedimas   |
 |---------------------|------------|------------|------------|------------|------------|
 | O1          | 9.76961 | 0.27431 | 7.81941 | 7.21743 | 12.315 |
 | O2         | 9.54364 | 0.291499 | 7.77404 | 7.20437 | 10.6587 |
 | O3          | 9.45867 | 0.291483 | 1.98966 | 7.2423 | 10.5391 |
 
-### -100tūkst.:
+### -10mln su struct :
+| Optimizavimo lygis |  Failo nuskaitymas ir vid. skaičiavimas  |Skirstymas į grupes   | Rūšiavimas   | Vargšiukų išvedimas   | Kietiakų išvedimas   |
+|---------------------|------------|------------|------------|------------|------------|
+| O1          | 9.80494 | 0.290217 | 7.39359 | 7.73289 | 10.5715 |
+| O2         | 9.76309 | 0.28980 | 7.63236 | 7.23345 | 10.6684 |
+| O3          | 9.63727 | 0.29365 | 7.59672 | 7.12748 | 10.4467 |
+
+### -10tūkst. su class:
 | Optimizavimo lygis |  Failo nuskaitymas ir vid. skaičiavimas  |Skirstymas į grupes   | Rūšiavimas   | Vargšiukų išvedimas   | Kietiakų išvedimas   |
 |---------------------|------------|------------|------------|------------|------------|
 | O1          | 0.0221049 | 0.0004123 | 0.00123 | 0.01019 | 0.01232|
 | O2         | 0.02202 | 0.00040 | 0.001339 | 0.01037 | 0.01265 |
-| O3          | 0.09570 | 0.002446 | 0.00724337 | 0.05984 | 0.08762 |
+| O3          | 0.09570 | 0.002446 | 0.007243 | 0.05984 | 0.08762 |
+
+### -10tūkst. su struct:
+| Optimizavimo lygis |  Failo nuskaitymas ir vid. skaičiavimas  |Skirstymas į grupes   | Rūšiavimas   | Vargšiukų išvedimas   | Kietiakų išvedimas   |
+|---------------------|------------|------------|------------|------------|------------|
+| O1          | 0.0215483 | 0.00042 | 0.00119 | 0.01032 | 0.01258 |
+| O2         | 0.0209021 | 0.000382 | 0.00119 | 0.01008 | 0.01298 |
+| O3          | 0.022018 | 0.000376 | 0.00121 | 0.01244 | 0.06156 |
 
 ### exe failo dydžiai:
 - O1 - 65 144 bytes
