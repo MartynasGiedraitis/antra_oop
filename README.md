@@ -329,8 +329,7 @@ Taipogi aprašyta klasės spartos analizė naudojant 3 skirtingus flag'us (O1,O2
 | O3          | 0.022018 | 0.000376 | 0.00121 | 0.01244 | 0.06156 |
 
 ### exe failo dydžiai baitais:
-
-    Optimizavimo lygis     | Class   | Struct  |
+ Optimizavimo lygis     | Class   | Struct  |
 |--------------|--------------|--------------|
 | O1 | 65 144 | 64 184  |
 | O2 | 65 128 | 64 184  |
