@@ -56,19 +56,15 @@ void Student::valymas(){
     med=0.0;
     vid=0.0;
 }
-double Student::vidurkis()
+void Student::vidurkis()
 {
-    if (ND.empty())
-        return 0;
-    
     double sum=0;
     for (int pazymys:ND){
         sum+=pazymys;
     }
     double rez=sum/ND.size();
     double finalrez=rez*0.4+egz*0.6;
-    vid=finalrez;
-    return finalrez;
+    vid=round(finalrez*100)/100;
     
 }
 double Student::mediana()

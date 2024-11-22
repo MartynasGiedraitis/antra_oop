@@ -14,7 +14,7 @@ private:
 public:
     Student() : vardas_(""), pavarde_(""), egz(0), med(0.0),vid(0.0) {}
     Student(std::ifstream& file);
-
+    ~Student() {}
     inline std::string vardas() const { return vardas_; }
     inline std::string pavarde() const { return pavarde_; }
     inline double getVid() const { return vid; }
@@ -38,7 +38,7 @@ public:
     void valymas();
     void namu_darbai();
     void skaitymas(std::ifstream &file);
-    double vidurkis();
+    void vidurkis();
     double mediana();
     double medSK(std::vector<int> paz);
     
@@ -60,7 +60,7 @@ private:
 void ivedimas(Student &lok, bool generate); 
 void outputVID(const Student &lok);
 void valymas();
-double vidurkis();
+void vidurkis();
 double mediana();
 void namu_darbai();
 void skaitymas(std::ifstream &file);
