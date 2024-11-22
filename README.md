@@ -274,3 +274,49 @@ Skirstymo į dvi studentų grupes funkcija geriausiai veikia:
    vector atveju: ./strategija_vector
    
    list atveju: ./strategija_list
+
+# v1.1
+
+### Pasikeitimai:
+Pasirinkta v1.0 grečiausiai veikusi strategija t.y 3 startegija su list tipo konteineriu. Taipogi programoje struktūra pakeista į klasę ir su tuo susiję kodo pakeitimai.
+
+## Atlikta spartos analizė:
+Buvo palyginti klasės ir struktūros programų laikai su 1mln ir 10mln studentų duomenų failais.
+Taipogi
+
+## Klasės ir struktūros laikai su 1mln ir 10mln:
+### - 10mln:
+|   | Failo nuskaitymas, vid. skaičiavimas | Įrašų skirstymas | Rūšiavimas  | Vargšiukų išvedimas  | Kietiakų išvedimas  |
+|------------|------------|------------|------------|------------|------------|
+| Struct | 31.1315| 1.68658 | 9.86224 | 7.87886 | 11.4018 |
+| Class| 32.3355 | 1.91418 | 9.85873 | 7.92228 | 11.8661 |
+
+
+### - 1mln:
+|   | Failo nuskaitymas, vid. skaičiavimas | Įrašų skirstymas | Rūšiavimas  | Vargšiukų išvedimas  | Kietiakų išvedimas  |
+|------------|------------|------------|------------|------------|------------|
+| Struct | 3.06290| 0.16349 | 0.59602 | 0.68340 | 0.97382 |
+| Class| 3.15883 | 0.19348 | 0.6699 | 0.6981 | 1.00531 |
+
+## Class laikai naudojant optimizavimo strategijas:
+
+### -10mln:
+| Optimizavimo lygis |  Failo nuskaitymas ir vid. skaičiavimas  |Skirstymas į grupes   | Rūšiavimas   | Vargšiukų išvedimas   | Kietiakų išvedimas   |
+|---------------------|------------|------------|------------|------------|------------|
+| O1          | 9.76961 | 0.27431 | 7.81941 | 7.21743 | 12.315 |
+| O2         | 9.54364 | 0.291499 | 7.77404 | 7.20437 | 10.6587 |
+| O3          | 9.45867 | 0.291483 | 1.98966 | 7.2423 | 10.5391 |
+
+### -100tūkst.:
+| Optimizavimo lygis |  Failo nuskaitymas ir vid. skaičiavimas  |Skirstymas į grupes   | Rūšiavimas   | Vargšiukų išvedimas   | Kietiakų išvedimas   |
+|---------------------|------------|------------|------------|------------|------------|
+| O1          | 0.0221049 | 0.0004123 | 0.00123 | 0.01019 | 0.01232|
+| O2         | 0.02202 | 0.00040 | 0.001339 | 0.01037 | 0.01265 |
+| O3          | 0.09570 | 0.002446 | 0.00724337 | 0.05984 | 0.08762 |
+
+### exe failo dydžiai:
+- O1 - 65 144 bytes
+-  O2 - 65 128 bytes
+-  O3 - 81 592 bytes
+
+
