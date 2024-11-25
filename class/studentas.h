@@ -15,6 +15,9 @@ public:
     Student() : vardas_(""), pavarde_(""), egz(0), med(0.0),vid(0.0) {}
     Student(std::ifstream& file);
     ~Student() {}
+
+
+
     inline std::string vardas() const { return vardas_; }
     inline std::string pavarde() const { return pavarde_; }
     inline double getVid() const { return vid; }
@@ -42,7 +45,6 @@ public:
     double mediana();
     double medSK(std::vector<int> paz);
     
-
 };
 class ChronoTimer {
 public:

@@ -209,8 +209,6 @@ vector<int> generavimas(int pazymiuSk){
 void skirstymas(list<Student> &lst1, list<Student> &vargsiukai){
     for(list<Student>::iterator it=lst1.begin(); it!=lst1.end();){
         if (it->getVid()<5){
-             std::cout << "Moving student to vargsiukai: " << it->vardas() << " " << it->pavarde() 
-              << " with vid: " << it->getVid() << std::endl;
             vargsiukai.push_back(std::move(*it));
             it=lst1.erase(it);
         } else{
