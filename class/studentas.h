@@ -16,7 +16,52 @@ public:
     Student(std::ifstream& file);
     ~Student() {}
 
+    Student(const Student &other)
+        : vardas_(other.vardas_), pavarde_(other.pavarde_), ND(other.ND), egz(other.egz), vid(other.vid){}
 
+    Student& operator=(const Student &other)
+    {
+        if (this != &other)
+        {
+            vardas_ = other.vardas_;
+            pavarde_ = other.pavarde_;
+            ND = other.ND;
+            egz = other.egz;
+            vid = other.vid;
+            med = other.med;
+        }
+        return *this;
+    }
+
+    friend std::istream& operator>>(std::istream& is, Student& stud)
+    {
+        is >> stud.vardas_ >> stud.pavarde_;
+
+        int pazymys;
+        while (is >> pazymys && pazymys != -1)
+        {
+            stud.ND.push_back(pazymys);
+        }
+
+        is >> stud.egz;
+
+        return is;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Student& stud)
+    {
+        os << std::setw(15) << std::left << stud.vardas_
+           << std::setw(15) << std::left << stud.pavarde_;
+
+        for (const auto& score : stud.ND)
+        {
+            os << std::setw(4) << std::right << score;
+        }
+
+        os << std::setw(4) << std::right << stud.egz;
+
+        return os;
+    }
 
     inline std::string vardas() const { return vardas_; }
     inline std::string pavarde() const { return pavarde_; }
