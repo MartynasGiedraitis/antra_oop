@@ -35,15 +35,8 @@ public:
 
     friend std::istream& operator>>(std::istream& is, Student& stud)
     {
+        cout << "Iveskite studento varda ir pavarde: ";
         is >> stud.vardas_ >> stud.pavarde_;
-
-        int pazymys;
-        while (is >> pazymys && pazymys != -1)
-        {
-            stud.ND.push_back(pazymys);
-        }
-
-        is >> stud.egz;
 
         return is;
     }
@@ -53,12 +46,8 @@ public:
         os << std::setw(15) << std::left << stud.vardas_
            << std::setw(15) << std::left << stud.pavarde_;
 
-        for (const auto& score : stud.ND)
-        {
-            os << std::setw(4) << std::right << score;
-        }
+        os<<std::setw(10)<<std::left<<stud.vid;
 
-        os << std::setw(4) << std::right << stud.egz;
 
         return os;
     }

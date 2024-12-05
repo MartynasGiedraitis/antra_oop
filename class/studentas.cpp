@@ -7,11 +7,7 @@ Student::Student(std::ifstream &file)
 }
 void ivedimas(Student &stud, bool generate)
 {
-  cout<<"Iveskite studento varda, pavarde: "<<endl;
-  string vardas,pavarde;
-  cin>>vardas>>pavarde;
-  stud.setVardas(vardas);
-  stud.setPavarde(pavarde);
+  cin>>stud;
   if(!generate){
     string egz;
     while(true){
@@ -154,7 +150,7 @@ void IsvedimasV(const list <Student>& vargsiukai){
     Vargsiukai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Vargsiukai<<"\n------------------------------------------------------------\n";
     for (const Student &stud:vargsiukai){
-        Vargsiukai<<setw(16)<<left<<stud.vardas()<<setw(16)<<left<<stud.pavarde()<<setw(10)<<left<<stud.getVid()<<endl;
+        Vargsiukai<<stud<<endl;
     }
     Vargsiukai.close();
 
@@ -164,7 +160,7 @@ void IsvedimasK(const list <Student>& kietiakai){
     Kietiakai<<setw(16)<<left<<"Vardas"<<setw(16)<<left<<"Pavarde"<<setw(10)<<left<<"Galutinis (Vid.)";
     Kietiakai<<"\n------------------------------------------------------------\n";
      for (const Student &stud:kietiakai){
-        Kietiakai<<setw(16)<<left<<stud.vardas()<<setw(16)<<left<<stud.pavarde()<<setw(10)<<left<<stud.getVid()<<endl;
+        Kietiakai<<stud<<endl;
     }
     Kietiakai.close();
 
