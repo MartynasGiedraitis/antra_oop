@@ -16,6 +16,16 @@ public:
     Student(std::ifstream& file);
     ~Student() {}
 
+Student(const string& vardas, const string& pavarde, int egz, const vector<int>& ND)
+        : vardas_(vardas), pavarde_(pavarde), ND(ND), egz(egz), vid(0.0), med(0.0) {
+        double sum = 0;
+        for (int grade : ND) {
+            sum += grade;
+        }
+        vid = (sum / ND.size() + egz) / 2.0;
+    }
+
+
     Student(const Student &other)
         : vardas_(other.vardas_), pavarde_(other.pavarde_), ND(other.ND), egz(other.egz), vid(other.vid){}
 

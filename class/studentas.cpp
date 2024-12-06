@@ -264,5 +264,5 @@ void failai(int pasirinkimas,Student &stud, list<Student> &lst1){
        lst1.clear();
        cout<<endl;
        }
-
+    
 }

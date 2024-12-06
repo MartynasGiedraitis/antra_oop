@@ -18,12 +18,13 @@ int main (){
     int c,k,p,n,r,j,g,pasirinkimas;
     string fileName;
     while (true) {
-    cout << "Ar norite sugeneruoti/naudotis jau sugeneruotais failais? (1 - sugeneruoti, 2 - naudotis jau sugeneruotais, 3 - kita): ";
+    cout << "Ar norite sugeneruoti/naudotis jau sugeneruotais failais? (1 - sugeneruoti,"
+    "2 - naudotis jau sugeneruotais, 3 - kita, 4 - constructor'iu patikrinimas): ";
     string input;
     cin >> input;
     try {
         g = stoi(input); 
-        if (g >= 1 && g <= 3) {
+        if (g >= 1 && g <= 4) {
             break;  
         } else {
             cout << "Netinkama ivestis. Pasirinkimas turi buti 1, 2 arba 3." << endl;
@@ -48,6 +49,24 @@ int main (){
     else if(g==3){
     cout<<"Rezultatus ivesite ranka ar iš failo? (1 - ranka, 2 - failas): ";
     cin>>r;
+    }
+    else if(g==4){
+        
+    vector<int> grades = {10, 9, 8, 7, 6};
+    Student student1("Jonas", "Jonaitis", 10, grades);
+    cout << "Original student (student1): " << student1 << endl;
+
+    Student student2 = student1; 
+    cout << "Copied student (student2, using copy constructor): " << student2 << endl;
+
+    Student student3;
+    student3 = student1; 
+    cout << "Copied student (student3, using copy assignment): " << student3 << endl;
+
+    }
+    else{
+        cout<<"Klaidingas pasirinkimas";
+        return 0;
     }
     if (r==1 && g==3){ 
         cout<<"Pagal ka norite rusiuoti? (1 - vardas, 2 - pavarde): ";
@@ -110,6 +129,7 @@ int main (){
             return 0;
     }
     } 
+
     cout << "Press Enter to continue...";
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     cin.get();
