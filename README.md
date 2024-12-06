@@ -1,5 +1,23 @@
 # **Studentų vidurkio skaičiavimo programa**
 
+# v1.2
+
+### Pasikeitimai:
+Studentų klasei buvo sukurti kopijavimo, bei kopijos priskyrimo konstruktoriai. Taip pat pridėti įvesties ir išvesties operatoriai.
+
+### Kopijavimo ir kopijos priskyrimo konstruktoriai:
+
+<img width="797" alt="Screenshot 2024-12-06 at 19 06 26" src="https://github.com/user-attachments/assets/0783a56c-afe6-4b9a-8dd6-df0fb577e359">
+
+### Įvesties ir išvesties operatoriai:
+">>" įvesties operatorius į Studentą objektą iš karto įveda visus reikalingus duomenis apie studentą, o "<<" išveda Studentos duomenis su viena nustatyta lygiuote. Tai leidžia juos pernaudoti skirtingose funkcijose ir sumažinti kodo apimtį programoje.
+<img width="567" alt="Screenshot 2024-12-06 at 19 14 11" src="https://github.com/user-attachments/assets/2357a85a-b143-4de4-a81f-a26620c0c01a">
+
+Išvesties į failą pavyzdys:
+>> <img width="330" alt="Screenshot 2024-12-06 at 19 20 45" src="https://github.com/user-attachments/assets/0f00a881-3da3-4229-83cf-0df40bc11f30">
+
+
+
 ## **v.01**
 
 ## **Apie programą:**
