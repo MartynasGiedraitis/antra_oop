@@ -18,11 +18,11 @@ public:
 
 Student(const string& vardas, const string& pavarde, int egz, const vector<int>& ND)
         : vardas_(vardas), pavarde_(pavarde), ND(ND), egz(egz), vid(0.0), med(0.0) {
-        double sum = 0;
-        for (int grade : ND) {
-            sum += grade;
-        }
-        vid = (sum / ND.size() + egz) / 2.0;
+        // double sum = 0;
+        // for (int grade : ND) {
+        //     sum += grade;
+        // }
+        // vid = (sum / ND.size() + egz) / 2.0;
     }
 
 
@@ -47,14 +47,31 @@ Student(const string& vardas, const string& pavarde, int egz, const vector<int>&
     {
         cout << "Iveskite studento varda ir pavarde: ";
         is >> stud.vardas_ >> stud.pavarde_;
+        cout<<"Iveskite egzamino pazymi: ";
+        is>>stud.egz;
+        cout<<"Iveskite namu darbu skaiciu"<<endl;
+        int n;
+        is>>n;
+        stud.ND.clear();
+        cout<<"Iveskite namu darbu pazymius"<<endl;
 
+        double sum = 0;
+        for (int i=0; i<n; i++){
+            int pazymys;
+            is>>pazymys;
+            stud.ND.push_back(pazymys);
+            sum+=pazymys;
+        }
+        if (n > 0) {
+            stud.vid = (sum / n + stud.egz) / 2.0;
+        }
         return is;
     }
 
     friend std::ostream& operator<<(std::ostream& os, const Student& stud)
     {
-        os << std::setw(15) << std::left << stud.vardas_
-           << std::setw(15) << std::left << stud.pavarde_;
+        os << std::setw(16) << std::left << stud.vardas_
+           << std::setw(16) << std::left << stud.pavarde_;
 
         os<<std::setw(10)<<std::left<<stud.vid;
 

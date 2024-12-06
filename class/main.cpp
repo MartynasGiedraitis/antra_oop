@@ -52,15 +52,15 @@ int main (){
     }
     else if(g==4){
         
-    vector<int> grades = {10, 9, 8, 7, 6};
-    Student student1("Jonas", "Jonaitis", 10, grades);
-    cout << "Original student (student1): " << student1 << endl;
+    Student student1;
+    cin >> student1; 
+    cout << "Student info: " << student1 << endl;
 
-    Student student2 = student1; 
+    Student student2 = student1;
     cout << "Copied student (student2, using copy constructor): " << student2 << endl;
 
     Student student3;
-    student3 = student1; 
+    student3 = student1;
     cout << "Copied student (student3, using copy assignment): " << student3 << endl;
 
     }
