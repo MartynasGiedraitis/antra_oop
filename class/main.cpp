@@ -51,7 +51,8 @@ int main (){
     cin>>r;
     }
     else if(g==4){
-        
+    // bandymas sukurti zmogaus objekta
+    // Zmogus zmogus1("Vardas", "Pavarde");    
     Student student1;
     cin >> student1; 
     cout << "Student info: " << student1 << endl;
