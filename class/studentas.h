@@ -1,33 +1,43 @@
 #ifndef STUD_H_INCLUDED
 #define STUD_H_INCLUDED
 #include "mylib.h"
-
-class Student
+class Zmogus
 {
-private:
+protected:
     std::string vardas_;
     std::string pavarde_;
+public:
+    Zmogus() : vardas_(""), pavarde_("") {}
+    Zmogus(const std::string& vardas, const std::string& pavarde)
+        : vardas_(vardas), pavarde_(pavarde) {}
+
+    virtual ~Zmogus() {}
+
+    
+    virtual std::string vardas() const = 0;
+    virtual std::string pavarde() const = 0;
+    virtual void printInfo(std::ostream& os) const = 0;
+};
+class Student : public Zmogus
+{
+private:
     std::vector<int> ND;
     int egz;
     double med,vid;
 
 public:
-    Student() : vardas_(""), pavarde_(""), egz(0), med(0.0),vid(0.0) {}
+    Student() : Zmogus(), egz(0), med(0.0),vid(0.0) {}
     Student(std::ifstream& file);
     ~Student() {}
 
 Student(const string& vardas, const string& pavarde, int egz, const vector<int>& ND)
-        : vardas_(vardas), pavarde_(pavarde), ND(ND), egz(egz), vid(0.0), med(0.0) {
-        // double sum = 0;
-        // for (int grade : ND) {
-        //     sum += grade;
-        // }
-        // vid = (sum / ND.size() + egz) / 2.0;
+        : Zmogus(vardas,pavarde), ND(ND), egz(egz), vid(0.0), med(0.0) {
+
     }
 
 
     Student(const Student &other)
-        : vardas_(other.vardas_), pavarde_(other.pavarde_), ND(other.ND), egz(other.egz), vid(other.vid){}
+        : Zmogus(other.vardas_,other.pavarde_), ND(other.ND), egz(other.egz), vid(other.vid){}
 
     Student& operator=(const Student &other)
     {
@@ -43,6 +53,19 @@ Student(const string& vardas, const string& pavarde, int egz, const vector<int>&
         return *this;
     }
 
+    void printInfo(std::ostream& os) const override
+    {
+        os << std::setw(16) << std::left << vardas_
+           << std::setw(16) << std::left << pavarde_
+           << std::setw(10) << std::left << vid;
+    }
+    void skaiciuotiVidurki(){
+        double sum = 0;
+        for (int i = 0; i < ND.size(); i++) {
+            sum += ND[i];
+        }
+        vid = (sum / ND.size() + egz) / 2.0;
+    }
     friend std::istream& operator>>(std::istream& is, Student& stud)
     {
         cout << "Iveskite studento varda ir pavarde: ";
@@ -70,17 +93,12 @@ Student(const string& vardas, const string& pavarde, int egz, const vector<int>&
 
     friend std::ostream& operator<<(std::ostream& os, const Student& stud)
     {
-        os << std::setw(16) << std::left << stud.vardas_
-           << std::setw(16) << std::left << stud.pavarde_;
-
-        os<<std::setw(10)<<std::left<<stud.vid;
-
-
+        stud.printInfo(os);
         return os;
     }
 
-    inline std::string vardas() const { return vardas_; }
-    inline std::string pavarde() const { return pavarde_; }
+    std::string vardas() const override { return vardas_; }
+    std::string pavarde() const override { return pavarde_; }
     inline double getVid() const { return vid; }
     inline double getMed() const { return med; }
     inline void setVardas(const std::string& vardas) { vardas_ = vardas; }  
