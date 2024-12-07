@@ -13,9 +13,8 @@ public:
 
     virtual ~Zmogus() {}
 
-    
-    virtual std::string vardas() const = 0;
-    virtual std::string pavarde() const = 0;
+    virtual std::string vardas() const { return vardas_; }
+    virtual std::string pavarde() const { return pavarde_; }
     virtual void printInfo(std::ostream& os) const = 0;
 };
 class Student : public Zmogus
@@ -69,7 +68,10 @@ Student(const string& vardas, const string& pavarde, int egz, const vector<int>&
     friend std::istream& operator>>(std::istream& is, Student& stud)
     {
         cout << "Iveskite studento varda ir pavarde: ";
-        is >> stud.vardas_ >> stud.pavarde_;
+        std::string vardas, pavarde;
+        is >> vardas >> pavarde;
+        stud.setVardas(vardas);
+        stud.setPavarde(pavarde);
         cout<<"Iveskite egzamino pazymi: ";
         is>>stud.egz;
         cout<<"Iveskite namu darbu skaiciu"<<endl;
@@ -97,8 +99,6 @@ Student(const string& vardas, const string& pavarde, int egz, const vector<int>&
         return os;
     }
 
-    std::string vardas() const override { return vardas_; }
-    std::string pavarde() const override { return pavarde_; }
     inline double getVid() const { return vid; }
     inline double getMed() const { return med; }
     inline void setVardas(const std::string& vardas) { vardas_ = vardas; }  
