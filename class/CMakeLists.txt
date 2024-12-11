@@ -1,15 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
-project(TestProject)
+project(oop)
 
 set(CMAKE_CXX_STANDARD 11)
 
-# Rasti Google Test biblioteką
+add_executable(Project main.cpp studentas.cpp studentas.h mylib.h)
 find_package(GTest REQUIRED)
 
 include_directories(${GTEST_INCLUDE_DIRS})
 
-# Sukurti testų vykdomąjį failą
-add_executable(test_student tests.cpp)
 
-# Susieti Google Test ir pthread su vykdomuoju failu
+add_executable(test_student tests.cpp)
 target_link_libraries(test_student ${GTEST_LIBRARIES} pthread)
