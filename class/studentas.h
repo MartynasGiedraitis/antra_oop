@@ -63,7 +63,8 @@ Student(const string& vardas, const string& pavarde, int egz, const vector<int>&
         for (int i = 0; i < ND.size(); i++) {
             sum += ND[i];
         }
-        vid = (sum / ND.size() + egz) / 2.0;
+        sum=sum/ND.size()*0.4+egz*0.6;
+        vid=round(sum*100)/100;
     }
     friend std::istream& operator>>(std::istream& is, Student& stud)
     {
