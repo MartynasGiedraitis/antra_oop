@@ -89,7 +89,7 @@ Student(const string& vardas, const string& pavarde, int egz, const vector<int>&
             sum+=pazymys;
         }
         if (n > 0) {
-            stud.vid = (sum / n + stud.egz) / 2.0;
+            stud.vid = sum/n*0.4+stud.egz*0.6;
         }
         return is;
     }
