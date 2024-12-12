@@ -1,5 +1,29 @@
 # **Studentų vidurkio skaičiavimo programa**
 
+# v2.0
+
+### Pasikeitimai:
+1. Realizuoti google test.
+2. Įkelta doxygen dokumentacija.
+
+# v1.5
+
+Iš Student klasės sukurta bazinė klasė Žmogus, sauganti vardą bei studento pavardę. Student klasė nuo šiol išvestinė klasė iš Zmogus ir ji palaiko visus trijų metodų taisyklės reikalavimus t.y kopijavimo, kopijos priskyrimo ir destruktoriaus.
+
+- Klasė Zmogus:
+<img width="496" alt="Screenshot 2024-12-07 at 15 26 05" src="https://github.com/user-attachments/assets/191ee66e-a0e5-48ba-a854-4740fc338444">
+
+- Klasė Student dabar atrodo taip:
+  
+- <img width="783" alt="Screenshot 2024-12-07 at 15 30 01" src="https://github.com/user-attachments/assets/cff5f6f8-0e1f-4dfe-92d5-3712b1dda1d0">
+
+Bandant sukurti Zmogus objektą gauname tokią klaidą:
+<img width="634" alt="Screenshot 2024-12-07 at 15 32 04" src="https://github.com/user-attachments/assets/ed25d840-2c70-4de6-913e-89117a22e5d6">
+
+Bet galime sukurti Student klasės objektą:
+
+<img width="546" alt="Screenshot 2024-12-07 at 15 35 50" src="https://github.com/user-attachments/assets/23ff7080-9d02-4a56-97b1-938f61740773">
+
 # v1.2
 
 ### Pasikeitimai:
