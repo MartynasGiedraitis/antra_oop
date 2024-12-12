@@ -32,6 +32,13 @@
 ### Pasikeitimai:
 1. Realizuoti google test.
 2. Įkelta doxygen dokumentacija.
+3. Cmake pritaikytas testam.
+   
+### Test.cpp:
+
+<img width="853" alt="Screenshot 2024-12-12 at 17 01 15" src="https://github.com/user-attachments/assets/a98a6b85-c44f-491e-b7e1-abbc62b83e0d" />
+
+
 
 # v1.5
 
