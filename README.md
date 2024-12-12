@@ -1,5 +1,63 @@
 # **Studentų vidurkio skaičiavimo programa**
 
+## Naudojimo instrukcija naudojant cmake, visus žingsnius atliekant terminale:
+1.Instaliuojamas CMake:
+   
+   macOS atveju: brew install cmake
+   
+2.Terminale nurododoma direktorija, kurioje egzistuoja CMakeLists.txt failas:
+   
+   cd "direktorija su CMakeLists.txt"
+   
+3.Sukuriama build failu direktorija:
+
+    mkdir build
+    cd build
+
+4.Paleidziam Build failu generavimas:
+
+    cmake ..
+
+5.Paleidžiam programos kompiliavima:
+   
+     make
+   
+6. Programos paleidimas:
+
+   - Testam paleist: "./test_student"
+   - Programai paleist: "./Project"
+
+# v2.0
+
+### Pasikeitimai:
+1. Realizuoti google test.
+2. Įkelta doxygen dokumentacija.
+3. Cmake pritaikytas testam.
+   
+### Test.cpp:
+
+<img width="853" alt="Screenshot 2024-12-12 at 17 01 15" src="https://github.com/user-attachments/assets/a98a6b85-c44f-491e-b7e1-abbc62b83e0d" />
+
+
+
+# v1.5
+
+Iš Student klasės sukurta bazinė klasė Žmogus, sauganti vardą bei studento pavardę. Student klasė nuo šiol išvestinė klasė iš Zmogus ir ji palaiko visus trijų metodų taisyklės reikalavimus t.y kopijavimo, kopijos priskyrimo ir destruktoriaus.
+
+- Klasė Zmogus:
+<img width="496" alt="Screenshot 2024-12-07 at 15 26 05" src="https://github.com/user-attachments/assets/191ee66e-a0e5-48ba-a854-4740fc338444">
+
+- Klasė Student dabar atrodo taip:
+  
+- <img width="783" alt="Screenshot 2024-12-07 at 15 30 01" src="https://github.com/user-attachments/assets/cff5f6f8-0e1f-4dfe-92d5-3712b1dda1d0">
+
+Bandant sukurti Zmogus objektą gauname tokią klaidą:
+<img width="634" alt="Screenshot 2024-12-07 at 15 32 04" src="https://github.com/user-attachments/assets/ed25d840-2c70-4de6-913e-89117a22e5d6">
+
+Bet galime sukurti Student klasės objektą:
+
+<img width="546" alt="Screenshot 2024-12-07 at 15 35 50" src="https://github.com/user-attachments/assets/23ff7080-9d02-4a56-97b1-938f61740773">
+
 # v1.2
 
 ### Pasikeitimai:
