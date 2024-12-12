@@ -22,11 +22,11 @@ TEST(StudentTest, PrintInfo) {
     
     stud.printInfo(oss);
  
-    std::string expected_output = "Jonas           Jonaitis        8.27      ";  // Pakeiskite pagal tikrąją reikšmę
+    std::string expected_output = "Jonas           Jonaitis        8.27      ";  
     EXPECT_EQ(oss.str(), expected_output);
 }
 
 int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);  // Inicijuoja Google Test
-    return RUN_ALL_TESTS();  // Paleidžia visus testus
+    ::testing::InitGoogleTest(&argc, argv); 
+    return RUN_ALL_TESTS(); 
 }
