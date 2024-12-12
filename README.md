@@ -1,5 +1,32 @@
 # **Studentų vidurkio skaičiavimo programa**
 
+## Naudojimo instrukcija naudojant cmake, visus žingsnius atliekant terminale:
+1.Instaliuojamas CMake:
+   
+   macOS atveju: brew install cmake
+   
+2.Terminale nurododoma direktorija, kurioje egzistuoja CMakeLists.txt failas:
+   
+   cd "direktorija su CMakeLists.txt"
+   
+3.Sukuriama build failu direktorija:
+
+    mkdir build
+    cd build
+
+4.Paleidziam Build failu generavimas:
+
+    cmake ..
+
+5.Paleidžiam programos kompiliavima:
+   
+     make
+   
+6. Programos paleidimas:
+
+   - Testam paleist: "./test_student"
+   - Programai paleist: "./Project"
+
 # v2.0
 
 ### Pasikeitimai:
