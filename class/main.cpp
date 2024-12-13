@@ -56,7 +56,7 @@ int main (){
     cin >> student1; 
     cout << "Student info: " << student1 << endl;
 
-    Student student2 = student1;
+    Student student2(student1);
     cout << "Copied student (student2, using copy constructor): " << student2 << endl;
 
     Student student3;
